@@ -31,7 +31,7 @@
   width: 100%;
 }
 .fondo {
-  background-image: url('@/modules/assets/img/gymFondo.jpg');
+  background-image: url('/src/assets/img/gymFondo.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 

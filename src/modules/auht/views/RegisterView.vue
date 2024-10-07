@@ -63,7 +63,7 @@
               </v-btn>
   
               <div class="links">
-                <router-link class="texto">¿Ya eres usuario?</router-link>
+                <router-link class="texto" :to="{ name: 'login' }">¿Ya eres usuario?</router-link>
               </div>
             </form>
           </v-card>

@@ -53,7 +53,7 @@
   
               <div class="links">
                 <router-link class="texto">¿Olvidaste tu contraseña?</router-link><br><br>
-                <router-link class="texto">Regístrate aquí</router-link>
+                <router-link :to="{name:'register'}"  class="texto">Regístrate aquí</router-link>
               </div>
             </form>
           </v-card>
