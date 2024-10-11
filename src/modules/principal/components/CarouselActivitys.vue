@@ -5,7 +5,7 @@
       <v-col cols="12" md="8"></v-col>
 
       <!-- Columna del carrusel, alineado a la derecha -->
-      <v-col cols="12" md="4" class="d-flex justify-end" style="margin-top: -350px; margin-left: -100px;">
+      <v-col cols="12" md="4" class="d-flex justify-end" style="margin-top: -350px; margin-left: -150px;">
         <v-carousel
           height="350"
           style="width: 600px;"
@@ -44,7 +44,7 @@ const imagenes = [
 
 <style>
 .v-carousel{
-  opacity:0.7
+  opacity:0.4
 }
 .carousel{
   height: 100%;
