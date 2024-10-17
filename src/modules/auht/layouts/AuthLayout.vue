@@ -1,27 +1,30 @@
 <template>
     <div class="fondo d-flex align-start">
       <v-container>
+        <TopMenu></TopMenu>
+        
         <v-row>
-          <v-col cols="12" md="6" class="d-flex justify-start" style="margin-left: 25px;">
-            <div class="ImagenLogo">
-              <h1>GYM ELEGANCE</h1>
-            </div>
-          </v-col>
   
-          <v-col cols="12" md="6" class="d-flex justify-start" style="margin-left: 150px; margin-top: 100px; font-size: 35px; font-weight: bold;"> 
+          <v-col cols="12" md="12" class="d-flex justify-start" style="margin-left: 150px; margin-top: 100px; font-size: 35px; font-weight: bold;"> 
             
               <p>"Tu constancia,<br> nuestro compromiso"</p>
            
           </v-col>
+
+
+          <div class="router-view-wrapper">
+           <RouterView></RouterView>
+          </div>
         </v-row>
       </v-container>
-      
-  
-      <div class="router-view-wrapper">
-        <RouterView></RouterView>
-      </div>
     </div>
   </template>
+
+  <script setup>
+  import TopMenu from '@/modules/principal/common/TopMenu.vue';
+
+
+  </script>
   
   <style scoped>
  body {

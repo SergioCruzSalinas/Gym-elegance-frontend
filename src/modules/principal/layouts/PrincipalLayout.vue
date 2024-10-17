@@ -1,38 +1,33 @@
 <template>
-  <v-app>
-    <div class="fondo"> 
-      <TopMenu></TopMenu>
+  <div class="fondo"> 
+    <TopMenu class="top-menu"></TopMenu>
 
-      <v-main class="contenido">
-
-      <routerView></routerView>
-      
-      </v-main>
-    </div>
-        
-  </v-app>
+    <v-main class="contenido">
+      <router-view></router-view>
+    </v-main>
+  </div>
 </template>
 
 <script setup>
 import TopMenu from '../common/TopMenu.vue';
-
 </script>
 
-
 <style>
- body {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
 }
+
 .fondo {
+  position: relative;
   background-image: url('/src/assets/img/gymFondo.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Permite que crezca según el contenido */
 }
 
 .fondo::before {
@@ -42,15 +37,19 @@ import TopMenu from '../common/TopMenu.vue';
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo con opacidad del 50% */
-  z-index: 1; /* Coloca la capa con opacidad detrás del contenido */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
 }
 
-.contenido{
+.top-menu {
+  z-index: 3;
+  position: relative;
+}
+
+.contenido {
   position: relative;
   z-index: 2;
   margin-top: 15px;
-
+  padding-bottom: 20px; /* Espacio adicional al final si es necesario */
 }
-
 </style>

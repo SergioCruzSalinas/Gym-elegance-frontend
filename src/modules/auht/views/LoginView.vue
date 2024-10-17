@@ -1,7 +1,5 @@
 <template>
-    <v-container fluid class="login-container">
-      <v-row>
-        <v-col cols="12" md="10" class="d-flex justify-end md:justify-center">
+        <v-col cols="12" md="12" class="d-flex justify-end md:justify-center mt-n16">
           <v-card
             class="pa-6 pa-md-12 pb-8 mr-md-32"
             style="background-color: black; opacity: 0.8; margin-top: 60px;"
@@ -58,8 +56,6 @@
             </form>
           </v-card>
         </v-col>
-      </v-row>
-    </v-container>
   </template>
   
   <script setup>
