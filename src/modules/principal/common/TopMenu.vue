@@ -18,9 +18,21 @@
         <RouterLink class="text-menu" :to="{ name: 'sucursales' }">Sucursal</RouterLink>
       </v-btn>
 
-      <div class="auth-btn">
+      <div v-if="authStore.isAdmin" class="auth-btn">
+        <div class="auth-btn">
       <v-btn text>
-        <RouterLink class="text-menu" :to="{ name: 'login' }">Iniciar sesión</RouterLink>
+        <RouterLink class="text-menu" :to="{ name: 'admin' }">Administrador</RouterLink>
+      </v-btn>
+
+      <v-btn text>
+        <RouterLink @click="authStore.logout"  class="text-menu" :to="{ name: 'register' }">Cerrar sesion</RouterLink>
+      </v-btn>
+      </div>
+      </div>
+
+      <div v-else class="auth-btn">
+      <v-btn text>
+        <RouterLink class="text-menu" :to="{ name: 'login' }">Iniciar sesion</RouterLink>
       </v-btn>
 
       <v-btn text>
@@ -56,17 +68,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useAuthStore } from '@/modules/auht/stores/auth.store';
 
-const drawer = ref(false);
+const authStore= useAuthStore();
 
-const toggleDrawer = () => {
-  drawer.value = !drawer.value;
-};
-
-const closeDrawer = () => {
-  drawer.value = false;
-};
 </script>
 
 <style scoped>

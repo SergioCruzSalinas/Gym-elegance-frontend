@@ -4,6 +4,9 @@
 
       <v-col cols="12" md="8" class="mt-md-8">
         <h1 class="text-center text-md-left">Bienvenido a Gym Elegance</h1>
+        <div v-if="authStore.isAdmin">
+          <h1>Esta sección solo es visible para administradores.</h1>
+          </div>
       </v-col>
 
       <v-col cols="12" md="8" class="mt-4 mt-md-16">
@@ -100,7 +103,16 @@ import CardPlanes from '../components/CardPlanes.vue';
 import Facebook from '@/assets/svg/redesSociales/Facebook.vue';
 import Tiktok from '@/assets/svg/redesSociales/Tiktok.vue';
 import Instagram from '@/assets/svg/redesSociales/Instagram.vue';
+
+// usar el store
+import { computed } from 'vue';
+import { useAuthStore } from '@/modules/auht/stores/auth.store';
+
+const authStore= useAuthStore()
+
+
 </script>
+
 
 <style scoped>
 h1 {

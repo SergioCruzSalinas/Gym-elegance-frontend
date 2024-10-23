@@ -5,7 +5,7 @@ import type { RouteRecordRaw } from "vue-router";
 export const authRoutes:RouteRecordRaw={
     path:'/auth',
     name:'auth',
-    component:()=>import('@/modules/auht/layouts/AuthLayout.vue'),
+    component:()=>import('@/modules/principal/layouts/PrincipalLayout.vue'),
     children:[
         {
             path:'login',
