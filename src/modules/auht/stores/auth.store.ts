@@ -9,9 +9,9 @@ export const useAuthStore = defineStore('auth', () => {
   // Acción de login
   const login = (email:string , password:string) => {
     // Asigna el rol en localStorage
-    localStorage.setItem('tipoDeRol', 'admin');
+    localStorage.setItem('tipoDeRol', 'usuario');
     // Sincroniza el estado del store
-    userRole.value = 'admin';
+    userRole.value = 'usuario';
     return true;
   };
 
@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   // Getters
   const isAdmin = computed(() => userRole.value === 'admin');
-  const isUser = computed(() => userRole.value === 'user');
+  const isUser = computed(() => userRole.value === 'usuario');
 
   // Retorno del store
   return {
