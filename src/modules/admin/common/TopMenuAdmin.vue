@@ -96,8 +96,8 @@
       <RouterLink class="text-menu" to="/">Menu principal</RouterLink>
     </v-btn>
 
-    <v-btn text>
-      <RouterLink @click="authStore.logout"  class="text-menu" :to="{ name: 'register' }">Cerrar sesion</RouterLink>
+    <v-btn text @click="authStore.logout()" class="text-menu">
+      Cerrar sesión
     </v-btn>
   </div>
 
@@ -106,16 +106,13 @@
 
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
 
 const authStore= useAuthStore();
 
-export default {
-  setup() {
     const router = useRouter();
     const isDropdownInscripciones = ref(false);
     const isDropdownActividades = ref(false);
@@ -131,14 +128,12 @@ export default {
 
     const subMenuInscripciones = ref([
       { text: 'Inscripciones', link: '/admin/inscripciones' },
-      { text: 'Agregar inscripción', link: '/admin/inscripciones/agregar' },
+      { text: 'Agregar inscripción', link: '/admin/inscripciones/registrar' },
     ]);
 
     const subMenuActividades = ref([
       { text: 'Actividades', link: '/admin/administrarActividades' },
       { text: 'Agregar actividad', link: '/admin/administrarActividades/agregar' },
-      { text: 'Agenda de actividades', link: '/admin/administrar-actividades/agenda' },
-      { text: 'Agregar cita para actividad', link: '/admin/administrar-actividades/agregar-cita' },
     ]);
 
     const subMenuInstructores = ref([
@@ -187,7 +182,6 @@ export default {
     };
 
     const selectItem1 = (item, link) => {
-      console.log('Seleccionando item:', item, 'en enlace:', link);
       menuInscripcionesText.value = item;
       closeMenus();
       navigateTo(link);
@@ -221,33 +215,7 @@ export default {
       router.replace({ path: link });
     };
 
-    return {
-      isDropdownInscripciones,
-      isDropdownActividades,
-      isDropdownInstructores,
-      isDropdownMembresias,
-      isDropdownAdmins,
-      menuInscripcionesText,
-      menuActividadesText,
-      menuInstructoresText,
-      menuMembresiasText,
-      menuAdminsText,
-      subMenuInscripciones,
-      subMenuActividades,
-      subMenuInstructores,
-      subMenuMembresias,
-      subMenuAdmins,
-      toggleMenu,
-      closeMenus,
-      selectItem1,
-      selectItem2,
-      selectItem3,
-      selectItem4,
-      selectItem5,
-      authStore,
-    };
-  },
-};
+
 </script>
 
 <style>

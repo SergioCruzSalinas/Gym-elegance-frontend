@@ -22,9 +22,11 @@ export const adminRoutes:RouteRecordRaw={
             component:()=>import('@/modules/admin/views/AgregarAdministrador.vue')
 
         },
-        InscripcionesRoutes,
+        
+        
         ActividadesRoutes,
         InstructoresRoutes,
         MembresiasRoutes,
+        InscripcionesRoutes,
     ]
 }

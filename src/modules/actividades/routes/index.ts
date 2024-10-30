@@ -22,10 +22,5 @@ export const ActividadesRoutes:RouteRecordRaw={
             name:'agregarActividad',
             component:() => import ('@/modules/actividades/views/AgregarActividad.vue')
         },
-        {
-            path:'agregar-cita',
-            name:'estatusActividad',
-            component:() => import ('@/modules/inscripciones/views/EstatusInscripcion.vue')
-        },
     ]
 }

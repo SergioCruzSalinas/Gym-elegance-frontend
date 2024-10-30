@@ -3,6 +3,7 @@ import HomeView from '@/modules/principal/views/HomeView.vue';
 import { authRoutes } from '@/modules/auht/routes';
 import PrincipalLayout from '@/modules/principal/layouts/PrincipalLayout.vue';
 import { adminRoutes } from '@/modules/admin/routes';
+import { agendaActividadesRoutes } from '@/modules/agendaActividades/router';
 
 
 const routes = [
@@ -30,12 +31,13 @@ const routes = [
         path:'sucursales',
         name:'sucursales',
         component:()=>import('@/modules/principal/views/Sucursales.vue')
-      }
+      },
     ]
   },
 
   authRoutes,
   adminRoutes,
+  agendaActividadesRoutes,
 ]
 
 const router = createRouter({
