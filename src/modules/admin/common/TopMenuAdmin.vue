@@ -93,7 +93,7 @@
 
       <div class="auth-btn">
     <v-btn text>
-      <RouterLink class="text-menu" to="/">Menu principal</RouterLink>
+      <RouterLink class="text-menu" :to="{name:'inicio'}">Menu principal</RouterLink>
     </v-btn>
 
     <v-btn text @click="authStore.logout()" class="text-menu">
