@@ -2,7 +2,7 @@
     <v-container fluid class="login-container">
       <v-row>
         <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
-          <h1>Agregar nueva actividad</h1>
+          <h1>Agregar nueva inscripcion</h1>
         </v-col>
         <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
           <v-card
