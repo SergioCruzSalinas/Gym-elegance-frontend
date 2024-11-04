@@ -1,5 +1,5 @@
 <template>
-    <h1>Membresias</h1>
+    <h1 class="text-center">Planes y precios en Gym Elagance</h1>
     <v-row justify="center" class="mt-8" align="stretch">
 
       <CardMembresia v-for="n in 3"></CardMembresia>

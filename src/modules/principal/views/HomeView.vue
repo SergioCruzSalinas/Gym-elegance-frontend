@@ -3,14 +3,14 @@
     <v-row no-gutters class=" flex mt-md-10">
 
       <v-col cols="12" md="8" class="mt-md-8">
-        <h1 class="text-center text-md-left">Bienvenido a Gym Elegance</h1>
+        <h1 class="text-center text-md-left bienvenida-titulo">Bienvenido a Gym Elegance</h1>
         <div v-if="authStore.isAdmin">
           <h1>Esta sección solo es visible para administradores.</h1>
           </div>
       </v-col>
 
       <v-col cols="12" md="8" class="mt-4 mt-md-16">
-        <p>
+        <p class="gym-description">
           En GYM ELEGANCE, nuestra misión es ayudarte a alcanzar tu mejor versión física y mental. 
           Somos más que un gimnasio; somos un espacio donde cada uno de tus objetivos es tomado en 
           serio y apoyado por un equipo de profesionales altamente capacitados. Aquí encontrarás todo 
@@ -19,13 +19,9 @@
       </v-col>
 
       <v-col cols="12" md="11" class="d-flex justify-end mt-4 mt-md-n16 mr-n16">
-        <v-btn
-          type="submit"
-          class="mb-8"
-          color="#28272C"
-          large>
-          ¿Eres nuevo? Pide tu visita. <br>Click aquí
-        </v-btn>
+          <v-btn type="submit" class="visit-button" large>
+            ¿Eres nuevo? Pide tu visita. <br>Click aquí
+          </v-btn>
       </v-col>
 
       <v-col cols="12" md="12" class="mt-4 mt-md-16">
@@ -53,14 +49,10 @@
         </section>
       </v-col>
 
-      <v-col cols="12" md="12" class="d-flex justify-center  mt-4 mt-md-16">
-        <v-btn
-        type="submit"
-          class="mb-8"
-          color="blue"
-          width="70%">
-          <RouterLink :to="{name:'register'}" style="color: white; font-size: 17px; text-decoration: none;">REGISTRATE AQUI</RouterLink>
-        </v-btn>
+      <v-col cols="12" md="12" class="d-flex justify-center mt-4 mt-md-16">
+          <v-btn class="register-button" width="70%">
+            <RouterLink :to="{name:'register'}" class="register-link">REGÍSTRATE AQUÍ</RouterLink>
+          </v-btn>
       </v-col>
 
       <v-col cols="12" md="12" class="mt-4 mt-md-16">
@@ -69,18 +61,14 @@
 
       <v-col cols="12" md="12" class=" d-flex justify-center  mt-4 mt-md-16">
         <v-row justify="center" class="mt-1" align="stretch">
-        <CardPlanes v-for="n in 2"></CardPlanes>
+        <CardMembresia v-for="n in 2"></CardMembresia>
       </v-row>
       </v-col>
 
-      <v-col cols="12" md="12" class=" d-flex justify-center  mt-4 mt-md-16">
-        <v-btn
-        type="submit"
-          class="mb-8"
-          color="blue"
-          width="70%">
-          <RouterLink :to="{name:'register'}" style="color: white; font-size: 17px; text-decoration: none;">PIDE TU VISITA AQUI</RouterLink>
-        </v-btn>
+      <v-col cols="12" md="12" class="d-flex justify-center mt-4 mt-md-16">
+          <v-btn class="visit-request-button" width="70%">
+            <RouterLink :to="{name:'register'}" class="register-link">PIDE TU VISITA AQUÍ</RouterLink>
+          </v-btn>
       </v-col>
 
       <v-col cols="12" md="12" class=" d-flex justify-center  mt-4 mt-md-16">
@@ -99,42 +87,43 @@
 </template>
 
 <script setup>
-import CardPlanes from '../components/CardPlanes.vue';
+import CardMembresia from '@/modules/membresias/components/CardMembresia.vue';
 import Facebook from '@/assets/svg/redesSociales/Facebook.vue';
 import Tiktok from '@/assets/svg/redesSociales/Tiktok.vue';
 import Instagram from '@/assets/svg/redesSociales/Instagram.vue';
-
-// usar el store
-import { computed } from 'vue';
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
 
 const authStore= useAuthStore()
-
 
 </script>
 
 
 <style scoped>
-h1 {
-  font-size: 48px; 
-}
 
-
-@media (min-width: 960px) {
-  h1 {
-    font-size: 80px;
+.bienvenida-titulo {
+    font-size: 48px;
+    color: #FFD700;
+    text-align: center;
   }
-}
-h2{
-  font-size: 30px;
-  font-weight: bold;
-}
+  
+  @media (min-width: 960px) {
+    .bienvenida-titulo {
+      font-size: 80px;
+      text-align: left;
+    }
+  }
+  
+  .gym-description {
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 1.6;
+  }
 
 .caracteristicas-gym ul{
   list-style-type: none;
   color: white;
-  text-decoration: none;
-  font-size: 19px;
+  font-size: 18px;
+  padding-left: 0;
 }
 .galeria{
   display: flex;
@@ -157,4 +146,22 @@ h2{
   opacity: 1;
   filter: contrast(120%);
 }
+
+.visit-button, .register-button, .visit-request-button {
+    font-weight: bold;
+    color: white;
+    background-color: #28272C;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  
+  .visit-button:hover, .register-button:hover, .visit-request-button:hover {
+    background-color: #1C1B20;
+  }
+  
+  .register-link {
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+  }
 </style>

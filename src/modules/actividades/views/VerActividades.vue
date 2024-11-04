@@ -16,6 +16,6 @@
 </template>
 
 <script setup>
-import CardActivity from '../common/CardActivity.vue';
+import CardActivity from '../components/CardActivity.vue';
 
 </script>

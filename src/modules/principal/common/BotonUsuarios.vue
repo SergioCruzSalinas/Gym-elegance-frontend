@@ -21,7 +21,7 @@
     </v-menu>
     <!-- Botones de perfil y cerrar sesión -->
     <v-btn text>
-      <RouterLink class="text-menu" :to="{ name: 'inicio' }">Perfil</RouterLink>
+      <RouterLink class="text-menu" :to="{ name: 'perfil' }">Perfil</RouterLink>
     </v-btn>
 
     <v-btn text @click="authStore.logout()" class="text-menu">

@@ -4,6 +4,8 @@ import { authRoutes } from '@/modules/auht/routes';
 import PrincipalLayout from '@/modules/principal/layouts/PrincipalLayout.vue';
 import { adminRoutes } from '@/modules/admin/routes';
 import { agendaActividadesRoutes } from '@/modules/agendaActividades/router';
+import { perfilRoutes } from '@/modules/perfil/router';
+
 
 
 const routes = [
@@ -20,12 +22,12 @@ const routes = [
       {
         path:'planes',
         name:'planes',
-        component:()=>import('@/modules/principal/views/PlanesView.vue'),
+        component:()=>import('@/modules/membresias/views/Membresias.vue'),
       },
       {
         path:'actividades',
         name:'actividades',
-        component:()=>import('@/modules/principal/views/Actividades.vue'),
+        component:()=>import('@/modules/actividades/views/VerActividades.vue'),
       },
       {
         path:'sucursales',
@@ -38,6 +40,7 @@ const routes = [
   authRoutes,
   adminRoutes,
   agendaActividadesRoutes,
+  perfilRoutes
 ]
 
 const router = createRouter({

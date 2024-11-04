@@ -4,19 +4,37 @@
       <v-card-item class="pa-4">
         <v-row>
           <v-col cols="12" class="text-center">
-            <div class="card-activity">
+            <!-- Tipo de Membresía -->
+            <div class="card-membresia">
+              <v-icon color="#4FC3F7" class="mr-2">mdi-membership</v-icon>
               <h1>Tipo de Membresía</h1>
             </div>
-            <div class="card-activity">
+            <v-divider></v-divider>
+
+            <!-- Descripción -->
+            <div class="card-membresia">
+              <v-icon color="#4FC3F7" class="mr-2">mdi-information</v-icon>
               <h2>Descripción breve de la membresía</h2>
             </div>
-            <div class="card-activity">
+            <v-divider></v-divider>
+
+            <!-- Duración -->
+            <div class="card-membresia">
+              <v-icon color="#4FC3F7" class="mr-2">mdi-timer</v-icon>
               <p><strong>Duración:</strong> 3 meses</p>
             </div>
-            <div class="card-activity">
+            <v-divider></v-divider>
+
+            <!-- Días de Acceso -->
+            <div class="card-membresia">
+              <v-icon color="#4FC3F7" class="mr-2">mdi-calendar-check</v-icon>
               <p><strong>Días de Acceso:</strong> Lunes a Viernes</p>
             </div>
-            <div class="card-activity">
+            <v-divider></v-divider>
+
+            <!-- Precio -->
+            <div class="card-membresia">
+              <v-icon color="#4FC3F7" class="mr-2">mdi-currency-usd</v-icon>
               <p class="price">Precio: $299 MXN</p>
             </div>
           </v-col>
@@ -46,33 +64,39 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card-activity {
+.card-membresia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 15px;
 }
 
-.card-activity h1 {
+.card-membresia h1 {
     font-size: 25px;
     text-align: center;
     font-weight: bold;
     color: #FFFFFF;
+    margin-left: 8px; /* Espacio entre el icono y el texto */
 }
 
-.card-activity h2 {
+.card-membresia h2 {
     font-size: 20px;
     text-align: center;
     color: #D3E3FC;
+    margin-left: 8px;
 }
 
-.card-activity p {
+.card-membresia p {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
     color: #FFFFFF;
+    margin-left: 8px;
 }
 
 .price {
     font-size: 20px;
-    color: #FFD700;
+    color: #4FC3F7;
     font-weight: bold;
 }
 

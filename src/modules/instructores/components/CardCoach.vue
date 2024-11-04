@@ -1,69 +1,88 @@
 <template>
-    <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
-      <v-card hover color="white" max-width="400px" style="height: 280px;" class="mr-4">
-        <v-card-item>
-          <v-row>
-            <v-col cols="12">
-              <div class="card-activity">
-                <h1>id instructor</h1>
-              </div>
-              <div class="card-activity">
-                <h2>Nombre:</h2>
-              </div>
-              <div class="card-activity">
-                <p>estatus:</p>
-              </div>
-              <div class="card-activity">
-                <p>telefono:</p>
-              </div>
-              <div class="card-activity">
-                <p>correo electronicio:</p>
-              </div>
-            </v-col>
-          </v-row>
-        </v-card-item>
+  <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
+    <v-card hover color="white" max-width="400px" class="card-container mr-4">
+      <v-card-item>
+        <v-row>
+          <v-col cols="12">
+            <div class="card-coach">
+              <v-icon color="#1F3A93" class="mr-2">mdi-account-badge</v-icon>
+              <h1>Id Instructor</h1>
+            </div>
+            <v-divider></v-divider>
+            <div class="card-coach">
+              <v-icon color="#1F3A93" class="mr-2">mdi-account</v-icon>
+              <h2>Nombre:</h2>
+            </div>
+            <v-divider></v-divider>
+            <div class="card-coach">
+              <v-icon color="#1F3A93" class="mr-2">mdi-check-circle</v-icon>
+              <p>Estatus:</p>
+            </div>
+            <v-divider></v-divider>
+            <div class="card-coach">
+              <v-icon color="#1F3A93" class="mr-2">mdi-phone</v-icon>
+              <p>Teléfono:</p>
+            </div>
+            <v-divider></v-divider>
+            <div class="card-coach">
+              <v-icon color="#1F3A93" class="mr-2">mdi-email</v-icon>
+              <p>Correo Electrónico:</p>
+            </div>
+          </v-col>
+        </v-row>
+      </v-card-item>
 
-        <v-card-actions>
-        <v-btn
-        color="#1F3A93" 
-        variant="elevated"
-        class="ml-12"
-        >
+      <v-card-actions>
+        <v-btn color="#1F3A93" variant="elevated" class="action-button">
           Editar
         </v-btn>
-
         <v-spacer></v-spacer>
-
-        <v-btn 
-         color="#B0B0B0" 
-         variant="elevated"
-         class="mr-12"
-        >
-          Cambiar estatus
+        <v-btn color="#B0B0B0" variant="elevated" class="action-button">
+          Cambiar Estatus
         </v-btn>
-
       </v-card-actions>
-      </v-card>
-    </v-col>
+    </v-card>
+  </v-col>
 </template>
 
 <style>
-.card-activity{
-    margin-bottom:15px;
+
+.card-container {
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  padding: 16px;
 }
 
-.card-activity h1 {
-    font-size: 25px;
-    font-weight: bold;
+.card-coach {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.card-activity h2{
-    font-size:20px;
+.card-coach h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
 }
 
-.card-activity p{
-    font-size: 12px;
+.card-coach h2 {
+  font-size: 18px;
+  color: #555;
 }
 
+.card-coach p {
+  font-size: 14px;
+  color: #666;
+}
+
+
+.action-button {
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  color: #fff;
+}
+
+.action-button:hover {
+  background-color: #1F4C93; 
+}
 </style>
-  

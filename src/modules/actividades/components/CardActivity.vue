@@ -1,6 +1,6 @@
 <template>
   <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
-    <v-card hover color="#333333" max-width="400px" style="height: 280px;" class="mr-16 membership-card">
+    <v-card hover color="#333333" max-width="400px" class="mr-16 membership-card">
       <v-card-item>
         <v-row>
           <!-- Columna de la imagen -->
@@ -11,35 +11,48 @@
           <!-- Columna del contenido -->
           <v-col cols="8">
             <div class="card-activity">
-              <h1>Descripción de la Actividad</h1>
+              <h1><v-icon left>mdi-information</v-icon>Descripción de la Actividad</h1>
             </div>
             <div class="card-activity">
-              <h2>Fecha:</h2>
+              <h2><v-icon left>mdi-file-document</v-icon>Número de Folio:</h2>
+              <p>FOLIO-XXXX</p>
+            </div>
+            <div class="card-activity">
+              <h2><v-icon left>mdi-calendar</v-icon>Fecha:</h2>
               <p>DD/MM/AAAA</p>
             </div>
             <div class="card-activity">
-              <h2>Hora de Inicio:</h2>
+              <h2><v-icon left>mdi-clock</v-icon>Hora de Inicio:</h2>
               <p>00:00 AM/PM</p>
             </div>
             <div class="card-activity">
-              <h2>Límite de Personas:</h2>
+              <h2><v-icon left>mdi-account-multiple</v-icon>Límite de Personas:</h2>
               <p>XX personas</p>
             </div>
           </v-col>
         </v-row>
       </v-card-item>
 
-      <v-card-actions class="justify-center">
+      <v-card-actions v-if="authStore.isAdmin"      class="justify-center">
         <v-btn color="#1F3A93" variant="elevated" class="action-button">
-          Editar
+          <v-icon left>mdi-pencil</v-icon>Editar
         </v-btn>
         <v-btn color="#B0B0B0" variant="elevated" class="action-button">
-          Cambiar Estatus
+          <v-icon left>mdi-refresh</v-icon>Cambiar Estatus
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
 </template>
+
+<script setup>
+import { useAuthStore } from '@/modules/auht/stores/auth.store';
+
+
+
+const authStore= useAuthStore();
+
+</script>
 
 <style>
 .membership-card {
