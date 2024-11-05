@@ -32,6 +32,10 @@
         <BotonUsuarios></BotonUsuarios>
       </div>
 
+      <div v-else-if="authStore.isInstructor" class="auth-btn">
+        <BotonUsuarios></BotonUsuarios>
+      </div>
+
       <div v-else class="auth-btn">
         <v-btn text>
           <RouterLink class="text-menu" :to="{ name: 'login' }">Iniciar sesión</RouterLink>

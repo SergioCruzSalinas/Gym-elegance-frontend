@@ -24,12 +24,14 @@ export const useAuthStore = defineStore('auth', () => {
   // Getters
   const isAdmin = computed(() => userRole.value === 'admin');
   const isUser = computed(() => userRole.value === 'usuario');
+  const isInstructor = computed(()=>userRole.value === 'instructor')
 
   // Retorno del store
   return {
     userRole,
     isAdmin,
     isUser,
+    isInstructor,
     login,
     logout,
   };
