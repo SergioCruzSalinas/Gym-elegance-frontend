@@ -41,7 +41,7 @@
         </v-row>
       </v-card-item>
 
-      <v-card-actions class="justify-center">
+      <v-card-actions v-if="authStore.isAdmin"    class="justify-center">
         <v-btn color="#ACDBF3" variant="elevated" class="action-button">
           Editar
         </v-btn>
@@ -52,6 +52,12 @@
     </v-card>
   </v-col>
 </template>
+
+<script setup>
+import { useAuthStore } from '@/modules/auht/stores/auth.store';
+
+const authStore = useAuthStore();
+</script>
 
 <style>
 .membership-card {

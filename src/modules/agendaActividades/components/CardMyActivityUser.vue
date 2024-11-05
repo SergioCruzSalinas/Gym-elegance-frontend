@@ -29,7 +29,7 @@
           </v-row>
         </v-card-item>
   
-        <v-card-actions class="justify-space-between">
+        <v-card-actions v-if="authStore.isAdmin" class="justify-space-between">
           <v-btn color="#1E90FF" variant="elevated" class="action-button" width="48%">
             Editar
           </v-btn>
@@ -37,9 +37,29 @@
             Cambiar Estatus
           </v-btn>
         </v-card-actions>
+
+        <v-card-actions v-else-if="authStore.isInstructor">
+          <v-btn color="#1E90FF" variant="elevated" class="action-button" width="100%">
+            Asistencia
+          </v-btn>
+        </v-card-actions>
+
+        <v-card-actions v-else-if="authStore.isUser">
+          <v-btn color="#1E90FF" variant="elevated" class="action-button" width="100%">
+            Editar
+          </v-btn>
+        </v-card-actions>
+
       </v-card>
     </v-col>
   </template>
+
+<script setup>
+import { useAuthStore } from '@/modules/auht/stores/auth.store';
+
+const authStore = useAuthStore();
+
+</script>
   
   <style>
   .membership-card {

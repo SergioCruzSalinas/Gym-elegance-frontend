@@ -17,16 +17,7 @@
         <v-list-item-title>{{ item.text }}</v-list-item-title>
         </v-list-item>
       </v-list>
-
     </v-menu>
-    <!-- Botones de perfil y cerrar sesión -->
-    <v-btn text>
-      <RouterLink class="text-menu" :to="{ name: 'perfil' }">Perfil</RouterLink>
-    </v-btn>
-
-    <v-btn text @click="authStore.logout()" class="text-menu">
-      Cerrar sesión
-    </v-btn>
   </v-toolbar-items>
   </div>
 

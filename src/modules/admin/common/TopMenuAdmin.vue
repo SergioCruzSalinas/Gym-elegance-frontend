@@ -1,109 +1,39 @@
 <template>
   <v-app-bar color="black" app>
     <!-- Botón para abrir el menú en pantallas pequeñas -->
-    <!-- <v-app-bar-nav-icon @click="toggleDrawer" class="d-sm-none"></v-app-bar-nav-icon> -->
+    <v-app-bar-nav-icon @click="toggleDrawer" class="d-sm-none"></v-app-bar-nav-icon>
 
     <!-- Menú para pantallas grandes -->
     <v-toolbar-items class="d-none d-sm-flex w-100 align-center">
-
-      <!-- Primer botón con menú desplegable -->
-      <v-menu v-model="isDropdownInscripciones" offset-y @click:outside="closeMenus">
+      <v-menu 
+        v-for="(menu, index) in menus" 
+        :key="index" 
+        :model-value="openMenuIndex === index" 
+        offset-y 
+        @click:outside="closeMenus">
         <template v-slot:activator="{ props }">
-          <v-btn text v-bind="props" @click="toggleMenu('inscripciones')">
-            {{ menuInscripcionesText }} <v-icon right>mdi-menu-down</v-icon>
+          <v-btn v-bind="props" @click="toggleMenu(index)">
+            {{ menu.text }} <v-icon right>mdi-menu-down</v-icon>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item 
-            v-for="(item, index) in subMenuInscripciones" 
-            :key="index" 
-            @click="selectItem1(item.text, item.link)">
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <!-- Segundo botón con menú desplegable -->
-      <v-menu v-model="isDropdownActividades" offset-y @click:outside="closeMenus">
-        <template v-slot:activator="{ props }">
-          <v-btn text v-bind="props" @click="toggleMenu('actividades')">
-            {{ menuActividadesText }} <v-icon right>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item 
-            v-for="(item, index) in subMenuActividades" 
-            :key="index" 
-            @click="selectItem2(item.text, item.link)">
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <!-- Tercer botón con menú desplegable -->
-      <v-menu v-model="isDropdownInstructores" offset-y @click:outside="closeMenus">
-        <template v-slot:activator="{ props }">
-          <v-btn text v-bind="props" @click="toggleMenu('instructores')">
-            {{ menuInstructoresText }} <v-icon right>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item 
-            v-for="(item, index) in subMenuInstructores" 
-            :key="index" 
-            @click="selectItem3(item.text, item.link)">
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <!-- Cuarto botón con menú desplegable -->
-      <v-menu v-model="isDropdownMembresias" offset-y @click:outside="closeMenus">
-        <template v-slot:activator="{ props }">
-          <v-btn text v-bind="props" @click="toggleMenu('membresias')">
-            {{ menuMembresiasText }} <v-icon right>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item 
-            v-for="(item, index) in subMenuMembresias" 
-            :key="index" 
-            @click="selectItem4(item.text, item.link)">
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <!-- Quinto botón con menú desplegable -->
-      <v-menu v-model="isDropdownAdmins" offset-y @click:outside="closeMenus">
-        <template v-slot:activator="{ props }">
-          <v-btn text v-bind="props" @click="toggleMenu('admins')">
-            {{ menuAdminsText }} <v-icon right>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item 
-            v-for="(item, index) in subMenuAdmins" 
-            :key="index" 
-            @click="selectItem5(item.text, item.link)">
+          <v-list-item v-for="(item, subIndex) in menu.subItems" :key="subIndex" @click="selectItem(menu, item)">
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
 
       <div class="auth-btn">
-    <v-btn text>
-      <RouterLink class="text-menu" :to="{name:'inicio'}">Menu principal</RouterLink>
-    </v-btn>
-
-    <v-btn text @click="authStore.logout()" class="text-menu">
-      Cerrar sesión
-    </v-btn>
-  </div>
-
+        <v-btn text>
+          <RouterLink class="text-menu" :to="{ name: 'inicio' }">Menú principal</RouterLink>
+        </v-btn>
+        <v-btn text @click="authStore.logout()" class="text-menu">
+          Cerrar sesión
+        </v-btn>
+      </div>
     </v-toolbar-items>
+    
   </v-app-bar>
-
 </template>
 
 <script setup>
@@ -111,114 +41,73 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
 
-const authStore= useAuthStore();
+const isDrawerOpen = ref(false);
+const openMenuIndex = ref(null); // Variable para controlar el índice del menú abierto
 
-    const router = useRouter();
-    const isDropdownInscripciones = ref(false);
-    const isDropdownActividades = ref(false);
-    const isDropdownInstructores = ref(false);
-    const isDropdownMembresias = ref(false);
-    const isDropdownAdmins = ref(false);
+const authStore = useAuthStore();
+const router = useRouter();
 
-    const menuInscripcionesText = ref('Inscripciones');
-    const menuActividadesText = ref('Actividades');
-    const menuInstructoresText = ref('Instructores');
-    const menuMembresiasText = ref('Membresías');
-    const menuAdminsText = ref('Admins');
-
-    const subMenuInscripciones = ref([
+const menus = ref([
+  {
+    text: 'Inscripciones',
+    subItems: [
       { text: 'Inscripciones', link: '/admin/inscripciones' },
       { text: 'Agregar inscripción', link: '/admin/inscripciones/registrar' },
-    ]);
-
-    const subMenuActividades = ref([
+    ]
+  },
+  {
+    text: 'Actividades',
+    subItems: [
       { text: 'Actividades', link: '/admin/administrarActividades' },
       { text: 'Agregar actividad', link: '/admin/administrarActividades/agregar' },
-    ]);
-
-    const subMenuInstructores = ref([
+    ]
+  },
+  {
+    text: 'Instructores',
+    subItems: [
       { text: 'Instructores', link: '/admin/instructores' },
       { text: 'Agregar instructor', link: '/admin/instructores/agregar' },
-    ]);
-
-    const subMenuMembresias = ref([
+    ]
+  },
+  {
+    text: 'Membresías',
+    subItems: [
       { text: 'Membresías', link: '/admin/membresias' },
       { text: 'Agregar membresía', link: '/admin/membresias/agregar' },
-    ]);
-
-    const subMenuAdmins = ref([
+    ]
+  },
+  {
+    text: 'Admins',
+    subItems: [
       { text: 'Administradores', link: '/admin/administradores' },
       { text: 'Agregar administrador', link: '/admin/agregar' },
-    ]);
+    ]
+  }
+]);
 
-    const toggleMenu = (menu) => {
-      // Cierra todos los menús
-      isDropdownInscripciones.value = false;
-      isDropdownActividades.value = false;
-      isDropdownInstructores.value = false;
-      isDropdownMembresias.value = false;
-      isDropdownAdmins.value = false;
+const toggleMenu = (index) => {
+  // Si el índice del menú abierto es el mismo, cerramos el menú
+  openMenuIndex.value = openMenuIndex.value === index ? null : index;
+};
 
-      // Abre el menú seleccionado
-      if (menu === 'inscripciones') {
-        isDropdownInscripciones.value = !isDropdownInscripciones.value;
-      } else if (menu === 'actividades') {
-        isDropdownActividades.value = !isDropdownActividades.value;
-      } else if (menu === 'instructores') {
-        isDropdownInstructores.value = !isDropdownInstructores.value;
-      } else if (menu === 'membresias') {
-        isDropdownMembresias.value = !isDropdownMembresias.value;
-      } else if (menu === 'admins') {
-        isDropdownAdmins.value = !isDropdownAdmins.value;
-      }
-    };
+const closeMenus = () => {
+  openMenuIndex.value = null;
+};
 
-    const closeMenus = () => {
-      isDropdownInscripciones.value = false;
-      isDropdownActividades.value = false;
-      isDropdownInstructores.value = false;
-      isDropdownMembresias.value = false;
-      isDropdownAdmins.value = false;
-    };
+const selectItem = (menu, item) => {
+  closeMenus();
+  router.replace({ path: item.link });
+};
 
-    const selectItem1 = (item, link) => {
-      menuInscripcionesText.value = item;
-      closeMenus();
-      navigateTo(link);
-    };
-
-    const selectItem2 = (item, link) => {
-      menuActividadesText.value = item;
-      closeMenus();
-      navigateTo(link);
-    };
-
-    const selectItem3 = (item, link) => {
-      menuInstructoresText.value = item;
-      closeMenus();
-      navigateTo(link);
-    };
-
-    const selectItem4 = (item, link) => {
-      menuMembresiasText.value = item;
-      closeMenus();
-      navigateTo(link);
-    };
-
-    const selectItem5 = (item, link) => {
-      menuAdminsText.value = item;
-      closeMenus();
-      navigateTo(link);
-    };
-
-    const navigateTo = (link) => {
-      router.replace({ path: link });
-    };
+// Método para alternar el estado del drawer
+const toggleDrawer = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+};
 
 
 </script>
 
-<style>
+<style scoped>
 .text-menu {
   color: white;
   text-decoration: none;
@@ -236,5 +125,4 @@ const authStore= useAuthStore();
 .auth-btn {
   margin-left: auto;
 }
-
 </style>

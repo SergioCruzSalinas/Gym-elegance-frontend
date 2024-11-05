@@ -1,31 +1,31 @@
 <template>
   <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
-    <v-card hover color="white" max-width="400px" class="card-container mr-4">
+    <v-card hover color="#333333" max-width="400px" class="card-container mr-4">
       <v-card-item>
         <v-row>
           <v-col cols="12">
             <div class="card-coach">
-              <v-icon color="#1F3A93" class="mr-2">mdi-account-badge</v-icon>
-              <h1>Id Instructor</h1>
+              <v-icon color="#FFD700" class="mr-2">mdi-account-badge</v-icon>
+              <h1 style="color: #FFD700;">Id Instructor</h1>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
-              <v-icon color="#1F3A93" class="mr-2">mdi-account</v-icon>
+              <v-icon  class="mr-2">mdi-account</v-icon>
               <h2>Nombre:</h2>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
-              <v-icon color="#1F3A93" class="mr-2">mdi-check-circle</v-icon>
+              <v-icon  class="mr-2">mdi-check-circle</v-icon>
               <p>Estatus:</p>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
-              <v-icon color="#1F3A93" class="mr-2">mdi-phone</v-icon>
+              <v-icon  class="mr-2">mdi-phone</v-icon>
               <p>Teléfono:</p>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
-              <v-icon color="#1F3A93" class="mr-2">mdi-email</v-icon>
+              <v-icon  class="mr-2">mdi-email</v-icon>
               <p>Correo Electrónico:</p>
             </div>
           </v-col>
@@ -62,24 +62,24 @@
 .card-coach h1 {
   font-size: 22px;
   font-weight: bold;
-  color: #333;
+  color: #E0E0E0;
 }
 
 .card-coach h2 {
   font-size: 18px;
-  color: #555;
+  color: #E0E0E0;
 }
 
 .card-coach p {
   font-size: 14px;
-  color: #666;
+  color: #E0E0E0;
 }
 
 
 .action-button {
   transition: background-color 0.3s ease;
   font-weight: bold;
-  color: #fff;
+  color: #FFD700;
 }
 
 .action-button:hover {

@@ -1,28 +1,32 @@
 <template>
   <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
-    <v-card hover color="black" max-width="400px" style="height: 400px;" class="mr-4 membership-card">
+    <v-card hover color="#333333" max-width="400px" style="height: 400px;" class="mr-4 membership-card">
       <v-card-item class="pa-4">
         <v-row>
           <v-col cols="12" class="text-center">
             <div class="card-admin">
-              <v-icon color="#4FC3F7" class="mr-2">mdi-account-badge</v-icon>
-              <h1>Id del Administrador</h1>
+              <v-icon  class="mr-2">mdi-account-badge</v-icon>
+              <h1 >Id del Administrador:</h1>
             </div>
+            <v-divider></v-divider>
             <div class="card-admin">
-              <v-icon color="#4FC3F7" class="mr-2">mdi-account</v-icon>
-              <h2>Nombre del Administrador</h2>
+              <v-icon  class="mr-2">mdi-account</v-icon>
+              <h2>Nombre del Administrador:</h2>
             </div>
+            <v-divider></v-divider>
             <div class="card-admin">
-              <v-icon color="#4FC3F7" class="mr-2">mdi-email</v-icon>
-              <p>Correo Electrónico</p>
+              <v-icon  class="mr-2">mdi-email</v-icon>
+              <p>Correo Electrónico:</p>
             </div>
+            <v-divider></v-divider>
             <div class="card-admin">
-              <v-icon color="#4FC3F7" class="mr-2">mdi-phone</v-icon>
-              <p>Número de Teléfono</p>
+              <v-icon  class="mr-2">mdi-phone</v-icon>
+              <p>Número de Teléfono:</p>
             </div>
+            <v-divider></v-divider>
             <div class="card-admin">
-              <v-icon color="#4FC3F7" class="mr-2">mdi-check-circle</v-icon>
-              <p class="price">Estatus</p>
+              <v-icon  class="mr-2">mdi-check-circle</v-icon>
+              <p class="price">Estatus:</p>
             </div>
           </v-col>
         </v-row>
