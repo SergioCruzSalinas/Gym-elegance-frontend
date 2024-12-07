@@ -15,7 +15,8 @@
           <form @submit.prevent="onLogin">
             <div class="texto">Cuenta</div>
             <v-text-field
-              v-model="email"
+              v-model="correoElectronico"
+              ref="emailInputRef"
               density="compact"
               placeholder="Ingresa tu correo electrónico"
               prepend-inner-icon="mdi-email-outline"
@@ -23,11 +24,13 @@
               class="custom-text-field"
               base-color="black"
               bg-color="white"
+              autocomplete="email" 
             ></v-text-field>
             
             <div class="texto">Contraseña</div>
             <v-text-field
-              v-model="password"
+              v-model="contrasenia"
+              ref="passwordInputRef"
               :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
               :type="visible ? 'text' : 'password'"
               density="compact"
@@ -37,6 +40,7 @@
               class="custom-text-field"
               base-color="black"
               bg-color="white"
+              autocomplete="current-password" 
               @click:append-inner="visible = !visible"
             ></v-text-field>
   
@@ -52,8 +56,8 @@
             </v-btn>
   
             <div class="links">
-              <router-link :to="{name:'register'}" class="texto">¿Olvidaste tu contraseña?</router-link><br><br>
-              <router-link :to="{name:'register'}" class="texto">Regístrate aquí</router-link>
+              <router-link :to="{ name: 'register' }" class="texto">¿Olvidaste tu contraseña?</router-link><br><br>
+              <router-link :to="{ name: 'register' }" class="texto">Regístrate aquí</router-link>
             </div>
           </form>
         </v-card>
@@ -66,26 +70,36 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth.store';
+import { tupleTypeAnnotation } from '@babel/types';
 
-const email = ref('');
-const password = ref('');
+const correoElectronico = ref('');
+const contrasenia = ref('');
 const visible = ref(false);
-const mensaje = ref('');
+const mensaje = ref('')
+const emailInputRef = ref<HTMLInputElement|null>(null);
+const passwordInputRef = ref<HTMLInputElement|null>(null);
 const router = useRouter();
 
-const authStore = useAuthStore()
+const authStore = useAuthStore();
 
 const onLogin = async () => {
-  console.log('Intentando iniciar sesión...'); // Agrega este log para depurar
-  if (!email.value || !password.value) {
-    mensaje.value = 'Ingrese el correo y la contraseña de manera correcta';
-    return;
-  }
 
-  const ok = await authStore.login( email.value, password.value);
+  if (!correoElectronico.value) {
+  mensaje.value = 'Por favor ingresa tu correo electrónico';
+  emailInputRef.value?.focus();
+  return;
+}
+
+if (!contrasenia.value) {
+  mensaje.value = 'Por favor ingresa tu contraseña';
+  passwordInputRef.value?.focus();
+  return;
+}
+
+  const ok = await authStore.login(correoElectronico.value, contrasenia.value);
 
   if(ok){
-    return router.replace('/home');
+    return router.replace({ name: 'inicio'});
   }
 
   mensaje.value= 'Ingrese la contraseña y el correo de manera correcta'
@@ -105,5 +119,4 @@ const onLogin = async () => {
   color: white;
   font-size: 20px;
 }
-
 </style>

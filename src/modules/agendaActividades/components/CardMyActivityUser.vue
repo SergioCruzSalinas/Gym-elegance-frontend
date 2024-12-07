@@ -1,5 +1,5 @@
 <template>
-    <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
+    <v-col cols="12" sm="6" md="4" lg="3" class="d-flex justify-center">
       <v-card hover color="#333333" width="100%" max-width="400px" class="mr-16 membership-card">
         <v-card-item>
           <v-row>

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <v-toolbar-items > <!-- Añade aquí la clase top-menu -->
-    <v-menu v-model="isDropdownAgendaActividades" offset-y @click:outside="closeMenu">
+  <v-row>
+    <v-col>
+      <v-menu v-model="isDropdownAgendaActividades" offset-y @click:outside="closeMenu">
       <template class="text-menu" v-slot:activator="{props}">
         <v-btn class="text-menu"  text v-bind="props" @click="toggleMenu('Mis Actividades')">
           {{ menuAgendaActividadesText }}<v-icon right>mdi-menu-down</v-icon>
@@ -17,10 +17,19 @@
         <v-list-item-title>{{ item.text }}</v-list-item-title>
         </v-list-item>
       </v-list>
-    </v-menu>
-  </v-toolbar-items>
-  </div>
-
+      </v-menu>
+    </v-col>
+    <v-col>
+        <v-btn>
+         <RouterLink class = "text-menu" :to="{ name: 'perfil' }"  >Perfil</RouterLink>
+        </v-btn>
+      </v-col>
+    <v-col>
+      <v-btn text @click="authStore.logout()" class="text-menu">
+        Cerrar sesión
+      </v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>
@@ -61,9 +70,6 @@ const selectItem = (item, link) => {
   closeMenu();
   navigateTo(link);
 }
-
-
-
 </script>
 
 <style scoped>

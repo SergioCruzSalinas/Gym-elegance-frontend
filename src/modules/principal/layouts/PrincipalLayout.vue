@@ -1,6 +1,6 @@
 <template>
   <div class="fondo"> 
-    <TopMenu class="top-menu"></TopMenu>
+    <TopMenu></TopMenu>
 
     <v-main class="contenido">
       <router-view></router-view>
@@ -41,10 +41,6 @@ body {
   z-index: 1;
 }
 
-.top-menu {
-  z-index: 3;
-  position: relative;
-}
 
 .contenido {
   position: relative;

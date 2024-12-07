@@ -7,35 +7,36 @@
             <!-- Tipo de Membresía -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-membership</v-icon>
-              <h1>Tipo de Membresía</h1>
+              <h1>{{ membership.tipo }}</h1>
             </div>
             <v-divider></v-divider>
 
             <!-- Descripción -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-information</v-icon>
-              <h2>Descripción breve de la membresía</h2>
+              <h2>{{ membership.descripcion }}</h2>
             </div>
             <v-divider></v-divider>
 
             <!-- Duración -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-timer</v-icon>
-              <p><strong>Duración:</strong> 3 meses</p>
+              <p><strong>Duración:</strong> {{ membership.mes_duracion }} meses</p>
+              <p><strong>Duración:</strong> {{ membership.dias_duracion }} dia</p>
             </div>
             <v-divider></v-divider>
 
             <!-- Días de Acceso -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-calendar-check</v-icon>
-              <p><strong>Días de Acceso:</strong> Lunes a Viernes</p>
+              <p><strong>Días de Acceso:</strong> Lunes a Domingos</p>
             </div>
             <v-divider></v-divider>
 
             <!-- Precio -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-currency-usd</v-icon>
-              <p class="price">Precio: $299 MXN</p>
+              <p class="price">Precio: ${{ membership.precio }} MXN</p>
             </div>
           </v-col>
         </v-row>
@@ -53,10 +54,17 @@
   </v-col>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { Membership } from '../interfaces/membership.interface';
 
 const authStore = useAuthStore();
+
+interface Props{
+  membership: Membership;
+}
+
+defineProps<Props>();
 </script>
 
 <style>

@@ -1,38 +1,107 @@
-// stores/userStore.js
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { computed, ref } from 'vue';
+import { AuthStatus, UserAuth } from '../interfaces';
+import { checkTokenAction, loginAction } from '../actions';
+import { useLocalStorage } from '@vueuse/core';
+import { RegisterAction } from '../actions/register.action';
 
 export const useAuthStore = defineStore('auth', () => {
-  // Estado
-  const userRole = ref(localStorage.getItem('tipoDeRol'));
 
-  // Acción de login
-  const login = (email:string , password:string) => {
-    // Asigna el rol en localStorage
-    localStorage.setItem('tipoDeRol', 'usuario');
-    // Sincroniza el estado del store
-    userRole.value = 'usuario';
-    return true;
+  const authStatus = ref<AuthStatus>(AuthStatus.Checking);
+  const user = ref<UserAuth|undefined>();
+  const token = ref(useLocalStorage('token', ''));
+
+  const login = async( correoElectronico: string, contrasenia: string) => {
+
+    try {
+      const loginResp = await loginAction(correoElectronico, contrasenia);
+
+      if(!loginResp.ok){
+        logout();
+        return false;
+      }
+
+      user.value = loginResp.user;
+      token.value = loginResp.token;
+      authStatus.value = AuthStatus.Authenticated
+
+      return true;
+
+    } catch (error) {
+      return logout()
+    }
+    
+    
+  }
+
+  const checkAuthStaus = async (): Promise<boolean> => {
+    try {
+      const statusResp = await checkTokenAction();
+
+      if( !statusResp.ok){
+        logout();
+        return false;
+      }
+
+      authStatus.value = AuthStatus.Authenticated;
+      user.value = statusResp.user;
+      token.value = statusResp.token
+
+      console.log('infromacion de user de check status', user)
+
+      return true;
+    } catch (error) {
+      logout();
+      return false;
+      
+    }
+  }
+
+  const register = async (nombreUsuario: string, correoElectronico: string, telefono: string, contrasenia: string) => {
+    try {
+      const registerResp = await RegisterAction(nombreUsuario, correoElectronico, telefono, contrasenia );
+
+      if(!registerResp.ok){
+        return { ok: false, message: registerResp.message}
+      }
+
+      return {ok: true, message:''}
+    } catch (error) {
+      return { ok: false, message: 'Error al registrar el usuario'}
+      
+    }
   };
 
-  // Acción de logout
   const logout = () => {
-    localStorage.removeItem('tipoDeRol');
-    userRole.value = null; // Actualiza el estado del store a null
-  };
+    localStorage.removeItem('token')
 
-  // Getters
-  const isAdmin = computed(() => userRole.value === 'admin');
-  const isUser = computed(() => userRole.value === 'usuario');
-  const isInstructor = computed(()=>userRole.value === 'instructor')
 
-  // Retorno del store
+    authStatus.value = AuthStatus.Unauthenticated;
+    user.value = undefined;
+    token.value = '';
+    return false
+  }
+
+
+
+ 
   return {
-    userRole,
-    isAdmin,
-    isUser,
-    isInstructor,
+    user,
+    authStatus,
+    token,
+
+    isChecking: computed(()=> authStatus.value === AuthStatus.Checking),
+    isAuthenticated: computed(()=> authStatus.value === AuthStatus.Authenticated),
+    isAdmin: computed(()=>user.value?.rol == 2),
+    isInstructor: computed(()=> user.value?.rol == 3),
+    isUser: computed(() => user.value?.rol == 4),
+    
+
     login,
     logout,
+    checkAuthStaus,
+    register,
+
+
   };
 });

@@ -6,22 +6,22 @@
           <v-col cols="12">
             <div class="card-coach">
               <v-icon color="#FFD700" class="mr-2">mdi-account-badge</v-icon>
-              <h1 style="color: #FFD700;">Id Instructor</h1>
+              <h1 style="color: #FFD700;">{{ coach.id }}</h1>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
               <v-icon  class="mr-2">mdi-account</v-icon>
-              <h2>Nombre:</h2>
+              <h2>Nombre: {{ coach.nombre }}</h2>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
               <v-icon  class="mr-2">mdi-check-circle</v-icon>
-              <p>Estatus:</p>
+              <p>Estatus: {{coach.estatus}}</p>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
               <v-icon  class="mr-2">mdi-phone</v-icon>
-              <p>Teléfono:</p>
+              <p>Teléfono: {{ coach.telefono }}</p>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">
@@ -44,6 +44,18 @@
     </v-card>
   </v-col>
 </template>
+
+<script lang="ts" setup>
+import { User } from '@/modules/auht/interfaces';
+
+
+interface Props{
+  coach: User;
+} 
+
+defineProps<Props>();
+
+</script>
 
 <style>
 

@@ -4,7 +4,7 @@
     <v-app-bar-nav-icon @click="toggleDrawer" class="d-sm-none"></v-app-bar-nav-icon>
 
     <!-- Menú para pantallas grandes -->
-    <v-toolbar-items class="d-none d-sm-flex w-100 align-center">
+    <v-toolbar-items class="d-none d-sm-flex w-100 align-center" v-if="!isSmallScreen">
       <v-menu 
         v-for="(menu, index) in menus" 
         :key="index" 
@@ -16,9 +16,11 @@
             {{ menu.text }} <v-icon right>mdi-menu-down</v-icon>
           </v-btn>
         </template>
-        <v-list>
+        <v-list v-if="openMenuIndex === index">
           <v-list-item v-for="(item, subIndex) in menu.subItems" :key="subIndex" @click="selectItem(menu, item)">
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
+            <RouterLink class="text-menu" :to="item.link">
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
+            </RouterLink>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -32,17 +34,45 @@
         </v-btn>
       </div>
     </v-toolbar-items>
-    
   </v-app-bar>
+
+  <!-- Menú de navegación lateral para pantallas pequeñas -->
+  <v-navigation-drawer v-model="isDrawerOpen" temporary class="d-sm-none small-drawer" v-if="isSmallScreen">
+    <v-list dense>
+      <v-list-item>
+        <v-menu 
+          v-for="(menu, index) in menus" 
+          :key="index" 
+          :model-value="openMenuIndex === index" 
+          offset-y 
+          @click:outside="closeMenus">
+          <template v-slot:activator="{ props }">
+            <v-btn class="drawer-btn" v-bind="props" @click="toggleMenu(index)">
+              {{ menu.text }} <v-icon right>mdi-menu-down</v-icon>
+            </v-btn>
+          </template>
+          <v-list v-if="openMenuIndex === index">
+            <v-list-item v-for="(item, subIndex) in menu.subItems" :key="subIndex" @click="selectItem(menu, item)">
+              <RouterLink class="text-menu" :to="item.link">
+                <v-list-item-title>{{ item.text }}</v-list-item-title>
+              </RouterLink>
+            </v-list-item>
+          </v-list>
+        </v-menu>          
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+
 
 const isDrawerOpen = ref(false);
-const openMenuIndex = ref(null); // Variable para controlar el índice del menú abierto
+const openMenuIndex = ref(null);
+const isSmallScreen = ref(window.innerWidth < 600);
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -86,7 +116,6 @@ const menus = ref([
 ]);
 
 const toggleMenu = (index) => {
-  // Si el índice del menú abierto es el mismo, cerramos el menú
   openMenuIndex.value = openMenuIndex.value === index ? null : index;
 };
 
@@ -99,12 +128,20 @@ const selectItem = (menu, item) => {
   router.replace({ path: item.link });
 };
 
-// Método para alternar el estado del drawer
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
 
+const handleResize = () => {
+  isSmallScreen.value = window.innerWidth < 600;
+};
 
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+});
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
 </script>
 
 <style scoped>
@@ -124,5 +161,25 @@ const toggleDrawer = () => {
 
 .auth-btn {
   margin-left: auto;
+}
+
+/* Estilos para el drawer en pantallas pequeñas */
+.small-drawer .drawer-btn {
+  width: 100%;
+  justify-content: start;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.drawer-btn {
+  color: white;
+  font-size: 16px;
+  text-transform: capitalize;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.drawer-btn:hover {
+  background-color: #555;
 }
 </style>

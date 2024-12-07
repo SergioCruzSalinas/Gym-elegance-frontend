@@ -1,6 +1,6 @@
 <template>
     <div class="fondo"> 
-      <TopMenuAdmin class="top-menu"/>
+      <TopMenuAdmin/>
 
 
       <v-main class="contenido">
@@ -42,12 +42,7 @@
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
   }
-  
-  .top-menu {
-    z-index: 3;
-    position: relative;
-  }
-  
+    
   .contenido {
     position: relative;
     z-index: 2;

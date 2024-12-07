@@ -61,7 +61,7 @@
 
       <v-col cols="12" md="12" class=" d-flex justify-center  mt-4 mt-md-16">
         <v-row justify="center" class="mt-1" align="stretch">
-        <CardMembresia v-for="n in 2"></CardMembresia>
+        <!-- <CardMembresia v-for="n in 2"></CardMembresia> -->
       </v-row>
       </v-col>
 

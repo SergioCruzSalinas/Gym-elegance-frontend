@@ -12,10 +12,10 @@
           >
             <div v-if="mensaje" class="mensaje text-center"> {{ mensaje }}</div> <br>
   
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="onRegister">
                 <div class="texto">Ingresa tu nombre</div>
               <v-text-field
-                v-model="name"
+                v-model="myForm.nombreUsuario"
                 density="compact"
                 placeholder="Ingresa tu nombre "
                 variant="outlined"
@@ -26,9 +26,21 @@
 
               <div class="texto">Cuenta</div>
               <v-text-field
-                v-model="email"
+                v-model="myForm.correoElectronico"
                 density="compact"
                 placeholder="Ingresa tu correo electrónico"
+                prepend-inner-icon="mdi-email-outline"
+                variant="outlined"
+                class="custom-text-field"
+                base-color="black"
+                bg-color="white"
+              ></v-text-field>
+
+              <div class="texto">Numero telefono:</div>
+              <v-text-field
+                v-model="myForm.telefono"
+                density="compact"
+                placeholder="Ingresa un numero de telefono"
                 prepend-inner-icon="mdi-email-outline"
                 variant="outlined"
                 class="custom-text-field"
@@ -38,7 +50,7 @@
               
               <div class="texto">Contraseña</div>
               <v-text-field
-                v-model="password"
+                v-model="myForm.contrasenia"
                 :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                 :type="visible ? 'text' : 'password'"
                 density="compact"
@@ -73,21 +85,36 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue';
+  import { reactive, ref } from 'vue';
   import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth.store';
   
-  const name=ref('')
-  const email = ref('');
-  const password = ref('');
   const visible = ref(false);
   const mensaje = ref('');
   const router = useRouter();
+
+  const authStore = useAuthStore();
+
+  const myForm = reactive({
+    nombreUsuario: '',
+    correoElectronico: '',
+    telefono: '',
+    contrasenia: '',
+  })
   
-  const handleLogin = () => {
-    if (!email.value || !password.value) {
-      mensaje.value = 'Ingrese el correo y la contraseña de manera correcta';
-      return;
-    }
+  const onRegister = async () => {
+
+    const { ok, message } = await authStore.register(myForm.nombreUsuario, myForm.correoElectronico, myForm.telefono, myForm.contrasenia);
+
+    if(ok){
+        router.replace({name:'login'});
+        
+        return;
+    };
+
+    mensaje.value= 'No se pudo registrar correctamente'
+
+
     router.push('/home');
   };
   </script>

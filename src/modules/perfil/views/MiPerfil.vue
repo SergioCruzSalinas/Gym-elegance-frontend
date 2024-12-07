@@ -10,32 +10,36 @@
 
         <v-divider></v-divider>
 
-        <v-card-text>
+        <div v-if="!userInfo">
+          <h1>cargando informacion del usuario</h1>
+        </div>
+
+        <v-card-text v-else>
           <v-row>
             <v-col cols="12" class="info-item">
               <v-icon class="mr-2">mdi-identifier</v-icon>
-              <span><strong>ID del Usuario:</strong> xxxxx</span>
+              <span><strong>ID del Usuario:</strong> {{ userInfo.id}}</span>
             </v-col>
             <v-col cols="12" class="info-item">
               <v-icon  class="mr-2">mdi-account-circle</v-icon>
-              <span><strong>Nombre del Usuario:</strong> xxxxx</span>
+              <span><strong>Nombre del Usuario:</strong> {{ userInfo.nombre}}</span>
             </v-col>
             <v-col cols="12" class="info-item">
               <v-icon  class="mr-2">mdi-email-outline</v-icon>
-              <span><strong>Correo Electrónico:</strong> xxxxxxxx</span>
+              <span><strong>Correo Electrónico:</strong> {{ userInfo.correo_electronico}}</span>
             </v-col>
             <v-col cols="12" class="info-item">
               <v-icon class="mr-2">mdi-phone</v-icon>
-              <span><strong>Número de Teléfono:</strong> xxxxxxxxxx</span>
+              <span><strong>Número de Teléfono:</strong> {{ userInfo.telefono}}</span>
             </v-col>
           </v-row>
         </v-card-text>
 
         <v-card-actions class="justify-end">
-          <v-btn  class="circular-btn" @click="editarPerfil">
+          <v-btn  class="circular-btn" >
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
-          <v-btn class="circular-btn" @click="cambiarContrasena">
+          <v-btn class="circular-btn">
             <v-icon>mdi-lock-reset</v-icon>
           </v-btn>
         </v-card-actions>
@@ -43,38 +47,8 @@
     </v-col>
 
     <!-- Sección de Membresía -->
-    <v-col v-if="authStore.isUser" cols="12" sm="6" class="d-flex justify-center">
-      <v-card  class="pa-4 mb-4 mr-md-10">
-        <v-card-title class="d-flex align-center">
-          <v-icon color="#1F3A93" class="mr-2">mdi-account-card-details</v-icon>
-          <h2 class="text-h6 font-weight-bold mb-0">Mi Membresía</h2>
-        </v-card-title>
-
-        <v-divider></v-divider>
-
-        <v-card-text>
-          <v-row>
-            <v-col cols="12" class="info-item">
-              <v-icon  class="mr-2">mdi-card-membership</v-icon>
-              <span><strong>Nombre de la Membresía:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon class="mr-2">mdi-calendar-start</v-icon>
-              <span><strong>Fecha de Inicio:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon  class="mr-2">mdi-calendar-end</v-icon>
-              <span><strong>Fecha de Expiración:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon class="mr-2">mdi-text-box-outline</v-icon>
-              <span><strong>Descripción de la Membresía:</strong> xxxxxxxx</span>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </v-col>
-
+    <Inscripcion v-if="authStore.isUser" />
+    
     <v-col v-if="authStore.isInstructor" cols="12" sm="6" class="d-flex justify-center">
       <v-card  class="pa-4 mb-4 mr-md-10">
         <v-card-title class="d-flex align-center">
@@ -110,18 +84,43 @@
 
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { usePerfilStore } from '../stores/perfil.store';
+import { onMounted, ref } from 'vue';
+import { User } from '@/modules/auht/interfaces';
+import Inscripcion from '@/modules/inscripciones/views/Inscripcion.vue';
 
-const authStore = useAuthStore();
 
-function editarPerfil() {
-  console.log("editar perfil");
+
+const perfilStore = usePerfilStore()
+const authStore = useAuthStore()
+
+const userInfo = ref<User|undefined>();
+
+
+const userProfile = async () => {
+  try {
+    
+    const userProfile = await perfilStore.loadUserProfile();
+
+    if(userProfile.ok) {
+      userInfo.value = userProfile.userInfo.value
+      console.log(userProfile.userInfo)
+      return;
+    }
+
+  } catch (error) {
+    console.log(error)
+    
+  }
+
 }
 
-function cambiarContrasena() {
-  console.log("cambiar contraseña");
-}
+onMounted(()=> {
+  userProfile();
+})
+
 </script>
 
 <style scoped>
