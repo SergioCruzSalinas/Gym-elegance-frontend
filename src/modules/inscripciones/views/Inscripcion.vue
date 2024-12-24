@@ -39,15 +39,16 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { useSubscribeStore } from '../stores/subscribe.store';
+
 import { Subscribe } from '../interfaces/subscribe.interface';
+import { useSubscriptionsStore } from '../stores/subscribe.store';
 
 
 
 
 const subscribe = ref<Subscribe|undefined>();
 
-const subscribeStore = useSubscribeStore();
+const subscribeStore = useSubscriptionsStore();
 
 
 
@@ -56,7 +57,7 @@ const loadSubscribeData = async () => {
 
     const subscribeData = await subscribeStore.loadSubscribe();
 
-    if(subscribeData.ok) {
+    if(subscribeData) {
       subscribe.value = subscribeData.subscribe.value
       console.log('infromacion de la inscripcion desde el componente', subscribe)
       return

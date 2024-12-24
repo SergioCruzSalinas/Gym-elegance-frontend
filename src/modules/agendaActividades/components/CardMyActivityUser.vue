@@ -11,19 +11,19 @@
             <!-- Columna del contenido -->
             <v-col cols="8">
               <div class="card-activity">
-                <h1><v-icon left>mdi-calendar</v-icon>Mi actividad</h1>
+                <h1><v-icon left>mdi-calendar</v-icon>{{ gymAppointment.descripcion  }}</h1>
               </div>
               <div class="card-activity">
                 <h2><v-icon left>mdi-calendar-clock</v-icon>Fecha:</h2>
-                <p>DD/MM/AAAA</p>
+                <p>{{ gymAppointment.fecha  }}</p>
               </div>
               <div class="card-activity">
                 <h2><v-icon left>mdi-clock</v-icon>Hora de Inicio:</h2>
-                <p>00:00 AM/PM</p>
+                <p>{{ gymAppointment.hora_inicio}}</p>
               </div>
               <div class="card-activity">
                 <h2><v-icon left>mdi-check-circle</v-icon>Asistencia:</h2>
-                <p>Pendiente</p>
+                <p> {{ gymAppointment.asistencia }}</p>
               </div>
             </v-col>
           </v-row>
@@ -54,10 +54,17 @@
     </v-col>
   </template>
 
-<script setup>
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+<script lang="ts" setup>
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
+import { GymAppointment } from '../interfaces/gymAppointment.interface';
 
 const authStore = useAuthStore();
+
+interface PropsGymAppointment{
+  gymAppointment: GymAppointment;
+}
+
+defineProps<PropsGymAppointment>();
 
 </script>
   

@@ -39,19 +39,25 @@
       <!-- Botones de acción, solo visibles para administradores -->
       <v-card-actions v-if="authStore.isAdmin" class="justify-end-center d-flex flex-column">
         <v-btn color="#1F3A93" variant="elevated" class="action-button mb-2" block>
-          <v-icon left>mdi-pencil</v-icon>Editar
+          <v-icon left>mdi-pencil</v-icon>
+          <RouterLink :to="`/admin/administrarActividades/lista-actividades/${activity.id}`" style="color: inherit; text-decoration: none;">
+            Editar
+          </RouterLink>
         </v-btn>
+      
         <v-btn color="#B0B0B0" variant="elevated" class="action-button" block>
           <v-icon left>mdi-refresh</v-icon>Cambiar Estatus
         </v-btn>
       </v-card-actions>
+
     </v-card>
   </v-col>
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
 import { Activity } from '../interfaces/activity.interface';
+import { RouterLink } from 'vue-router';
 
 const authStore = useAuthStore();
 

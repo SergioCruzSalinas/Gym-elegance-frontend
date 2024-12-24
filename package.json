@@ -16,8 +16,10 @@
     "core-js": "^3.37.1",
     "pinia": "^2.2.4",
     "roboto-fontface": "*",
+    "vee-validate": "^4.14.7",
     "vue": "^3.4.31",
-    "vuetify": "^3.6.11"
+    "vuetify": "^3.6.11",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@babel/types": "^7.24.7",

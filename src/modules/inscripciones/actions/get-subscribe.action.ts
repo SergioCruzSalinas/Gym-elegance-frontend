@@ -1,5 +1,5 @@
 import { GymApi } from "@/api/api";
-import { useAuthStore } from "@/modules/auht/stores/auth.store";
+import { useAuthStore } from "@/modules/auth/stores/auth.store";
 import { isAxiosError } from "axios";
 import { Subscribe } from "../interfaces/subscribe.interface";
 
@@ -12,17 +12,17 @@ interface SubscribeError {
 
 interface SubscribeSuccess {
     ok: true;
-    subscribe: Subscribe;
+    data: Subscribe;
 }
 
 export const getSubscribeAction = async () :Promise<SubscribeError | SubscribeSuccess>  => {
     try {
-        const { data } = await GymApi.get(`inscripciones/${authStore.user?.id}`)
+        const { data } = await GymApi.get<Subscribe>(`inscripciones/${authStore.user?.id}`)
 
 
         return {
             ok: true,
-            subscribe: data,
+            data,
         }
 
     } catch (error) {

@@ -1,6 +1,6 @@
 import { ActividadesRoutes } from "@/modules/actividades/routes";
-import isAdminGuard from "@/modules/auht/guards/is-admin.guard";
-import isAuthenticatedGuard from "@/modules/auht/guards/is-authenticated.guard";
+import isAdminGuard from "@/modules/auth/guards/is-admin.guard";
+import isAuthenticatedGuard from "@/modules/auth/guards/is-authenticated.guard";
 import { InscripcionesRoutes } from "@/modules/inscripciones/routes/index";
 import { InstructoresRoutes } from "@/modules/instructores/router";
 import { MembresiasRoutes } from "@/modules/membresias/router";

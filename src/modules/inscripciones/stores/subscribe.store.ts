@@ -7,7 +7,7 @@ import { Subscribe } from "../interfaces/subscribe.interface";
 
 
 
-export const useSubscribeStore = defineStore('subscribe', () => {
+export const useSubscriptionsStore = defineStore('subscribe', () => {
     const subscribe = ref<Subscribe | undefined>();
 
     const loadSubscribe = async() => {
@@ -18,7 +18,7 @@ export const useSubscribeStore = defineStore('subscribe', () => {
                 return false;
             }
 
-            subscribe.value = subscribeResp.subscribe
+            subscribe.value = subscribeResp.data
 
             console.log('informacion de la suubscribe desde la store', subscribe.value)
 

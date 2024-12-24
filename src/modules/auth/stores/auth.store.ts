@@ -47,8 +47,6 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = statusResp.user;
       token.value = statusResp.token
 
-      console.log('infromacion de user de check status', user)
-
       return true;
     } catch (error) {
       logout();

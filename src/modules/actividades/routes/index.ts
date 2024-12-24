@@ -13,8 +13,9 @@ export const ActividadesRoutes:RouteRecordRaw={
 
         },
         {
-            path:':id',
-            name:'verActividad',
+            path:'lista-actividades/:activityId',
+            name:'EditarActividad',
+            props: true,
             component:() => import ('@/modules/actividades/views/VerActividad.vue')
         },
         {

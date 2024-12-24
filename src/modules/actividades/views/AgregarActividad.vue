@@ -15,7 +15,7 @@
         >
           <div v-if="mensaje" class="mensaje text-center"> {{ mensaje }}</div> <br>
 
-          <form @submit.prevent="handleCreateActivity">
+          <form @submit.prevent="createActivity">
             <div class="texto">Nombre o descripcion de la actividad</div>
             <v-text-field
               v-model="addActivity.descripcion"
@@ -44,6 +44,7 @@
               variant="outlined"
               class="custom-text-field"
               color="white"
+              :error-messages="cupoError"
             ></v-text-field>
 
             <div class="texto">Fecha de la actividad</div>
@@ -95,27 +96,59 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
+import { useActivitiesStore } from '../store/activites.store';
+import { useRouter } from 'vue-router';
 
 const mensaje=ref('')
+const cupoError = ref('')
 
 const addActivity = reactive({
   descripcion: '',
   idInstructor: '',
-  cupo: 0,
+  cupo: undefined,
   fecha: '',
   horaInicio: '',
   horaFin: ''
 });
 
-function handleCreateActivity() {
+const activitiesStore = useActivitiesStore();
+const router = useRouter();
 
-  console.log('Creando actividad:', addActivity);
+const createActivity = async () => {
+  // Validación de 'cupo'
+  const cupo = parseInt(addActivity.cupo, 10);
+
+  if (isNaN(cupo) || cupo <= 0) {
+    cupoError.value = 'Por favor, ingrese un número entero válido para el cupo.';
+    return;
+  }
+
+  // Limpia los posibles mensajes de error
+  cupoError.value = '';
+
+  const ok = await activitiesStore.createActivity(
+    addActivity.descripcion, 
+    cupo, 
+    addActivity.idInstructor, 
+    addActivity.fecha, 
+    addActivity.horaInicio, 
+    addActivity.horaFin
+  );
+
+  console.log("valores de addActivity desde el componente", addActivity);
+  console.log(typeof(cupo));
+
+  if (ok) {
+    return router.replace({ name: 'listaDeActividades' });
+  }
+
+  mensaje.value = 'No se pudo crear la actividad';
 }
 
 function formatFecha() {
   if (addActivity.fecha) {
     const date = new Date(addActivity.fecha);
-    addActivity.fecha = date.toISOString().slice(0, 10)
+    addActivity.fecha = date.toISOString().slice(0, 10);
   }
 }
 </script>
@@ -129,9 +162,9 @@ function formatFecha() {
   font-size: 20px;
 }
 .custom-text-field .v-input__control .v-field__input {
-  color: white; /* Cambia el color del texto */
+  color: white; 
 }
 .custom-text-field .v-input__control .v-field__placeholder {
-  color: white; /* Cambia el color del placeholder */
+  color: white; 
 }
 </style>

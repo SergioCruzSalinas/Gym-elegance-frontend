@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/modules/principal/views/HomeView.vue';
-import { authRoutes } from '@/modules/auht/routes';
+import { authRoutes } from '@/modules/auth/routes';
 import PrincipalLayout from '@/modules/principal/layouts/PrincipalLayout.vue';
 import { adminRoutes } from '@/modules/admin/routes';
 import { agendaActividadesRoutes } from '@/modules/agendaActividades/router';

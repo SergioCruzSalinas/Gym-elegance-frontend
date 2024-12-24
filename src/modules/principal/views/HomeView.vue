@@ -91,7 +91,7 @@ import CardMembresia from '@/modules/membresias/components/CardMembresia.vue';
 import Facebook from '@/assets/svg/redesSociales/Facebook.vue';
 import Tiktok from '@/assets/svg/redesSociales/Tiktok.vue';
 import Instagram from '@/assets/svg/redesSociales/Instagram.vue';
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
 
 const authStore= useAuthStore()
 

@@ -4,21 +4,19 @@
       <v-card-item class="pa-4">
         <v-row>
           <v-col cols="12" class="text-center">
-            <!-- Tipo de Membresía -->
+           
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-membership</v-icon>
               <h1>{{ membership.tipo }}</h1>
             </div>
             <v-divider></v-divider>
 
-            <!-- Descripción -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-information</v-icon>
               <h2>{{ membership.descripcion }}</h2>
             </div>
             <v-divider></v-divider>
 
-            <!-- Duración -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-timer</v-icon>
               <p><strong>Duración:</strong> {{ membership.mes_duracion }} meses</p>
@@ -26,14 +24,12 @@
             </div>
             <v-divider></v-divider>
 
-            <!-- Días de Acceso -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-calendar-check</v-icon>
               <p><strong>Días de Acceso:</strong> Lunes a Domingos</p>
             </div>
             <v-divider></v-divider>
 
-            <!-- Precio -->
             <div class="card-membresia">
               <v-icon color="#4FC3F7" class="mr-2">mdi-currency-usd</v-icon>
               <p class="price">Precio: ${{ membership.precio }} MXN</p>
@@ -43,9 +39,12 @@
       </v-card-item>
 
       <v-card-actions v-if="authStore.isAdmin"    class="justify-center">
-        <v-btn color="#ACDBF3" variant="elevated" class="action-button">
-          Editar
-        </v-btn>
+        <router-link :to="`/admin/membresias/lista-membresias/${membership.id}`" style="text-decoration: none">
+          <v-btn color="#ACDBF3" variant="elevated" class="action-button">
+            Editar
+          </v-btn>
+        </router-link>
+
         <v-btn color="#B0B0B0" variant="elevated" class="action-button">
           Cambiar Estatus
         </v-btn>
@@ -55,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
 import { Membership } from '../interfaces/membership.interface';
 
 const authStore = useAuthStore();
@@ -90,7 +89,7 @@ defineProps<Props>();
     text-align: center;
     font-weight: bold;
     color: #FFFFFF;
-    margin-left: 8px; /* Espacio entre el icono y el texto */
+    margin-left: 8px; 
 }
 
 .card-membresia h2 {

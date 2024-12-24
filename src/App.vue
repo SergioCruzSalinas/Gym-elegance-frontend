@@ -14,8 +14,8 @@
 
 <script lang="ts" setup>
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools';
-import { useAuthStore } from './modules/auht/stores/auth.store';
-import { AuthStatus } from './modules/auht/interfaces';
+import { useAuthStore } from './modules/auth/stores/auth.store';
+import { AuthStatus } from './modules/auth/interfaces';
 import { useRoute, useRouter } from 'vue-router';
 
 const authStore = useAuthStore();

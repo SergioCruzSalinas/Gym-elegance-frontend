@@ -1,6 +1,6 @@
 import { GymApi } from "@/api/api"
-import { User } from "@/modules/auht/interfaces";
-import { useAuthStore } from "@/modules/auht/stores/auth.store"
+import { User } from "@/modules/auth/interfaces";
+import { useAuthStore } from "@/modules/auth/stores/auth.store"
 import { isAxiosError } from "axios"
 
 const authStore = useAuthStore()

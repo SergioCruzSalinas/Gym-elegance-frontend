@@ -101,7 +101,7 @@
 import { ref } from 'vue';
 import BotonCoach from './BotonCoach.vue';
 import BotonUsuarios from './BotonUsuarios.vue';
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
 
 const authStore = useAuthStore();
 const drawer = ref(false);

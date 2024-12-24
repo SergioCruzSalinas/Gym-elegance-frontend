@@ -1,122 +1,102 @@
 <template>
-    <v-container fluid class="login-container">
-      <v-row>
-        <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
-          <h1>Agregar nueva membresia</h1>
-        </v-col>
-        <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
-          <v-card
-            class="pa-6 pa-md-12 pb-8 mr-md-32"
-            style="background-color: black; opacity: 0.8; margin-top: 20px;"
-            elevation="8"
-            rounded="lg"
-            width="500"
-            max-width="800px"
-          >
-            <div v-if="mensaje" class="mensaje text-center"> {{ mensaje }}</div> <br>
-  
-            <form @submit.prevent="crearMembresia()">
+  <v-container fluid class="login-container">
+    <v-row>
+      <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
+        <h1>Crear nueva membresia</h1>
+      </v-col>
+      <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
+        <v-card
+          class="pa-6 pa-md-12 pb-8 mr-md-32"
+          style="background-color: black; opacity: 0.8; margin-top: 20px;"
+          elevation="8"
+          rounded="lg"
+          width="500"
+          max-width="800px"
+        >
+          <div v-if="mensaje" class="mensaje text-center"> {{ mensaje }}</div> <br>
+          <form @submit="onSubmit">
+            <div class="input-group">
               <div class="texto">Nombre</div>
-              <v-text-field
-                v-model="formMembresia.tipo"
-                density="compact"
-                placeholder="Nombre o id del usuario"
-                variant="outlined"
-                class="custom-text-field"
-                color="white"
-              ></v-text-field>
+              <CustomInput
+                v-model="tipo"
+                v-bind="tipoAttrs"
+                :error="errors.tipo"
+                icon="mdi-account"
+              />
+            </div>
 
+            <div class="input-group">
               <div class="texto">Descripcion del plan</div>
-              <v-text-field
-                v-model="formMembresia.descripcion"
-                density="compact"
-                placeholder="Nombre o id del usuario"
-                variant="outlined"
-                class="custom-text-field"
-                color="white"
-              ></v-text-field>
-  
+              <CustomInput
+                v-model="descripcion"
+                v-bind="descripcionAttrs"
+                :error="errors.descripcion"
+                icon="mdi-text-box"
+              />
+            </div>
+
+            <div class="input-group">
               <div class="texto">Dias de duracion</div>
-              <v-text-field
-                v-model="formMembresia.DiasDuracion"
-                type="number"
-                density="compact"
-                placeholder="Nombre o id del usuario"
-                variant="outlined"
-                class="custom-text-field"
-                color="white"
-              ></v-text-field>
+              <CustomInput
+                v-model.number="dias_duracion"
+                v-bind="dias_duracionAttrs"
+                :error="errors.dias_duracion"
+                icon="mdi-calendar"
+              />
+            </div>
 
-              <div class="texto">meses de duracion</div>
-              <v-text-field
-                v-model="formMembresia.mesDuracion"
+            <div class="input-group">
+              <div class="texto">Meses de duracion</div>
+              <CustomInput
+                v-model.number="mes_duracion"
+                v-bind="mes_duracionAttrs"
+                :error="errors.mes_duracion"
+                icon="mdi-calendar-month"
                 type="number"
-                density="compact"
-                placeholder="Nombre o id del usuario"
-                variant="outlined"
-                class="custom-text-field"
-                color="white"
-              ></v-text-field>
+                step="1"
+              />
+            </div>
 
+            <div class="input-group">
               <div class="texto">Precio</div>
-              <v-text-field
-                v-model="formMembresia.precio"
-                density="compact"
-                variant="outlined"
-                clearable
-                color="white"
-              ></v-text-field>
-  
-              <v-btn
-                type="submit"
-                class="mb-8"
-                color="black"
-                size="large"
-                variant="tonal"
-                block
-              >
-                <div class="texto">Crear membresia</div>
-              </v-btn>
-            </form>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </template>
-  
-  <script setup>
-  import { reactive, ref } from 'vue';
+              <CustomInput
+                v-model.number="precio"
+                v-bind="precioAttrs"
+                :error="errors.precio"
+                type="number"
+                icon="mdi-currency-usd"
+              />
+            </div>
 
-  const mensaje = ref('');
-  
-  const formMembresia = reactive({
-   tipo:'',
-   descripcion:'',
-   mesDuracion:'',
-   DiasDuracion:'',
-   precio:'',
-  });
-  
-  function crearMembresia() {
-  
-    console.log('Creando membresia:', formMembresia);
-  }
-  
-  </script>
-  
-  <style scoped>
-  .mensaje {
-    color: red;
-  }
-  .texto {
-    color: white;
-    font-size: 20px;
-  }
-  .custom-text-field .v-input__control .v-field__input {
-    color: white; /* Cambia el color del texto */
-  }
-  .custom-text-field .v-input__control .v-field__placeholder {
-    color: white; /* Cambia el color del placeholder */
-  }
-  </style>
-  
+            <v-btn
+              type="submit"
+              class="mb-8"
+              color="black"
+              size="large"
+              variant="tonal"
+              block
+            >
+              <div class="texto">crear membresia</div>
+            </v-btn>
+          </form>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script src="./Membresia.ts" lang="ts"></script>
+
+<style scoped>
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+
+.texto {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+</style>

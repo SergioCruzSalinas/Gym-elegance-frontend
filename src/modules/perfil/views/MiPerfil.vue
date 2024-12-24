@@ -37,10 +37,15 @@
 
         <v-card-actions class="justify-end">
           <v-btn  class="circular-btn" >
+            <RouterLink style="color:black" :to="`/perfil/my-perfil/${ authStore.user?.id }`">
             <v-icon>mdi-pencil</v-icon>
+          </RouterLink>
           </v-btn>
-          <v-btn class="circular-btn">
+
+          <v-btn class="circular-btn">   
+            <RouterLink style="color:black" to="/auth/password">  
             <v-icon>mdi-lock-reset</v-icon>
+            </RouterLink>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -85,16 +90,17 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore } from '@/modules/auht/stores/auth.store';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
 import { usePerfilStore } from '../stores/perfil.store';
 import { onMounted, ref } from 'vue';
-import { User } from '@/modules/auht/interfaces';
+import { User } from '@/modules/auth/interfaces';
 import Inscripcion from '@/modules/inscripciones/views/Inscripcion.vue';
 
 
 
 const perfilStore = usePerfilStore()
 const authStore = useAuthStore()
+
 
 const userInfo = ref<User|undefined>();
 

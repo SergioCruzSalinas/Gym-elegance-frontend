@@ -12,8 +12,9 @@ export const MembresiasRoutes:RouteRecordRaw={
             component:()=>import('@/modules/membresias/views/Membresias.vue')
         },
         {
-            path:':id',
-            name:'verMembresia',
+            path:'lista-membresias/:idMembresia',
+            name:'editarMembresia',
+            props: true,
             component:() => import ('@/modules/membresias/views/Membresia.vue')
         },
         {

@@ -1,4 +1,4 @@
-import isAuthenticatedGuard from '@/modules/auht/guards/is-authenticated.guard';
+import isAuthenticatedGuard from '@/modules/auth/guards/is-authenticated.guard';
 import { RouteRecordRaw } from 'vue-router';
 
 export const perfilRoutes:RouteRecordRaw={
@@ -12,6 +12,12 @@ export const perfilRoutes:RouteRecordRaw={
           path:'my-perfil',
           name:'myPerfil',
           component:()=>import('@/modules/perfil/views/MiPerfil.vue')
+        },
+        {
+          path:'my-perfil/:id',
+          name:'perfilId',
+          component:()=>import('@/modules/perfil/views/EditPerfil.vue')
+
         },
         
     ]
