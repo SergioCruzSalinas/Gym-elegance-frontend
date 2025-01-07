@@ -13,10 +13,10 @@ export const ActividadesRoutes:RouteRecordRaw={
 
         },
         {
-            path:'lista-actividades/:activityId',
+            path:'lista-actividades/:idActivity',
             name:'EditarActividad',
             props: true,
-            component:() => import ('@/modules/actividades/views/VerActividad.vue')
+            component:() => import ('@/modules/actividades/views/Actividad.vue')
         },
         {
             path:'agregar',

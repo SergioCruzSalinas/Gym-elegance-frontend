@@ -12,9 +12,10 @@ export const InstructoresRoutes:RouteRecordRaw={
             component:()=>import('@/modules/instructores/views/VerInstructores.vue')
         },
         {
-            path:':id',
+            path:'lista-instructores/:idCoach',
             name:'verInstructor',
-            component:() => import ('@/modules/instructores/views/VerInstructor.vue')
+            props: true,
+            component:() => import ('@/modules/instructores/views/Coach.vue')
         },
         {
             path:'agregar',

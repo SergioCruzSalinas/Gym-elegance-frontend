@@ -52,7 +52,7 @@
     </v-col>
 
     <!-- Sección de Membresía -->
-    <Inscripcion v-if="authStore.isUser" />
+    <SubscriptionUser v-if="authStore.isUser" />
     
     <v-col v-if="authStore.isInstructor" cols="12" sm="6" class="d-flex justify-center">
       <v-card  class="pa-4 mb-4 mr-md-10">
@@ -94,7 +94,7 @@ import { useAuthStore } from '@/modules/auth/stores/auth.store';
 import { usePerfilStore } from '../stores/perfil.store';
 import { onMounted, ref } from 'vue';
 import { User } from '@/modules/auth/interfaces';
-import Inscripcion from '@/modules/inscripciones/views/Inscripcion.vue';
+import SubscriptionUser from '@/modules/inscripciones/components/SubscriptionUser.vue';
 
 
 

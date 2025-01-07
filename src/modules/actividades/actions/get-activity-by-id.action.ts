@@ -1,10 +1,23 @@
 import { GymApi } from "@/api/api"
 import { Activity } from "../interfaces"
-import { isAxiosError } from "axios"
 
 
 
-export const ActivityIdAction = async (activityId : number) => {
+
+export const activityIdAction = async (activityId : number) => {
+    if(isNaN(activityId) || activityId === undefined){
+        return {
+            id: 0,
+            descripcion: '',
+            id_instructor: '',
+            cupo: 0,
+            fecha:'',
+            fecha_inicio: '',
+            fecha_fin: '',
+
+        }
+        
+    }
 
     try {
         const { data } = await GymApi.get<Activity>(`/actividades/${activityId}`);
@@ -15,17 +28,6 @@ export const ActivityIdAction = async (activityId : number) => {
         return data;
 
     } catch (error) {
-        if (isAxiosError(error)) {
-        
-            const errorMessage = error.response?.data || "Datos no válido";
-            console.log("Error desde el servidor:", error.response?.data);  
-
-            return {
-                ok: false,
-                message: errorMessage  
-            };
-        }
-        
 
         console.log("Error inesperado:", error);
         throw new Error('No se pudo realizar la petición');

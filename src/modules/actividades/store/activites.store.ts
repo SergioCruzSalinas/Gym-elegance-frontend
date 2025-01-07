@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { Activity } from "../interfaces/activity.interface";
-import { addActivityAction, getActivitiesAction } from "../actions";
+import { getActivitiesAction } from "../actions";
 
 
 export const useActivitiesStore = defineStore('activities',() => {
@@ -28,36 +28,7 @@ export const useActivitiesStore = defineStore('activities',() => {
         }
     }
 
-    const createActivity = async ( 
-        descripcion: string, 
-        cupo: number, 
-        idInstructor: string, 
-        fecha: string, 
-        horaInicio: string, 
-        horaFin: string
-    ) => {
-        try {
-            const addActivityResp = await addActivityAction(
-                descripcion, 
-                cupo, 
-                idInstructor, 
-                fecha, 
-                horaInicio, 
-                horaFin
-            )
-
-            if(!addActivityResp.ok){
-                return false
-            }
-
-            return true
-        } catch (error) {
-            return false
-            
-        }
-
-    }
-
+    
 
 
 
@@ -66,6 +37,5 @@ export const useActivitiesStore = defineStore('activities',() => {
         activities,
 
         getActivities,
-        createActivity,
     }
 })

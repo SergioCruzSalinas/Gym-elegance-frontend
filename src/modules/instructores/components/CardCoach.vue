@@ -26,16 +26,18 @@
             <v-divider></v-divider>
             <div class="card-coach">
               <v-icon  class="mr-2">mdi-email</v-icon>
-              <p>Correo Electrónico:</p>
+              <p>Correo Electrónico: {{coach.correo_electronico}}</p>
             </div>
           </v-col>
         </v-row>
       </v-card-item>
 
       <v-card-actions>
-        <v-btn color="#1F3A93" variant="elevated" class="action-button">
-          Editar
-        </v-btn>
+        <RouterLink :to="`/admin/instructores/lista-instructores/${coach.id}`" style="text-decoration:none">
+          <v-btn color="#1F3A93" variant="elevated" class="action-button">
+           Editar
+          </v-btn>
+        </RouterLink>
         <v-spacer></v-spacer>
         <v-btn color="#B0B0B0" variant="elevated" class="action-button">
           Cambiar Estatus
@@ -46,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import { User } from '@/modules/auht/interfaces';
+import { User } from '@/modules/auth/interfaces';
 
 
 interface Props{

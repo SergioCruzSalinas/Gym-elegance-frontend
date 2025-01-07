@@ -12,9 +12,10 @@ export const InscripcionesRoutes:RouteRecordRaw={
           component:()=>import('@/modules/inscripciones/views/VerInscripciones.vue')
         },
         {
-            path: ':id',
+            path: 'lista/:idSubscription',
             name:'verInscripcion',
-            component:() => import ('@/modules/inscripciones/views/VerInscripciones.vue')
+            props: true,
+            component:() => import ('@/modules/inscripciones/views/Inscripcion.vue')
         },
         {
             path: 'registrar',

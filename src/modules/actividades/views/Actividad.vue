@@ -18,36 +18,67 @@
 
           <form @submit="onSubmit"  >
             
+            <div class="input-group">
+              <div class="texto">Nombre o descripcion de la actividad</div>
+              <CustomInput
+              v-model="descripcion"
+              v-bind="descripcionAttrs"
+              :error="errors.descripcion"
+              icon="mdi-text-box"
+            />
+            </div>
 
             <div class="input-group">
-              <div class="texto">Usuario: </div>
+              <div class="texto">Instructor</div>
               <CustomInput
-              v-model="id_usuario"
-              v-bind="id_usuarioAttrs"
-              :error="errors.id_usuario"
+              v-model="id_instructor"
+              v-bind="id_instructorAttrs"
+              :error="errors.id_instructor"
               icon="mdi-text-box"
             />
             </div>
             
             <div class="input-group">
-              <div class="texto">Membresia: </div>
+              <div class="texto">Limite de personas</div>
               <CustomInput
-              v-model.number="id_membresia"
-              v-bind="id_membresiaAttrs"
-              :error="errors.id_membresia"
+              v-model.number="cupo"
+              v-bind="cupoAttrs"
+              :error="errors.cupo"
               icon="mdi-text-box"
               />
             </div>
 
             <div class="input-group">
-             <div class="texto">Fecha de la inscripcion</div>
+             <div class="texto">Fecha de la actividad</div>
              <CustomInput
-              v-model="fecha_inicio"
-              v-bind="fecha_inicioAttrs"
-              :error="errors.fecha_inicio"
+              v-model="fecha"
+              v-bind="fechaAttrs"
+              :error="errors.fecha"
               type="date"
               icon="mdi-text-box"
              />
+            </div>
+
+            <div class="input-group">
+             <div class="texto">Hora que inicia la actividad</div>
+             <CustomInput
+              v-model="hora_inicio"
+              v-bind="hora_inicioAttrs"
+              :error="errors.hora_inicio"
+              icon="mdi-text-box"
+              type="time"
+             />
+            </div>
+
+            <div class="input-group">   
+            <div class="texto">Hora que finaliza la actividad</div>
+            <CustomInput
+              v-model="hora_fin"
+              v-bind="hora_finAttrs"
+              :error="errors.hora_fin"
+              icon="mdi-text-box"
+              type="time"
+            />
             </div>
 
             <v-btn
@@ -67,9 +98,7 @@
   </v-container>
 </template>
 
-
-
-<script src="./Subscription.ts" lang="ts"></script>
+<script src="./activity.ts" lang="ts"></script>
 
 <style scoped>
 

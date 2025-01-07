@@ -3,7 +3,6 @@
         <v-col cols="6" md="8" offset-md="2">
         <v-text-field
           class="center"
-          v-model="search"
           label="Nombre del instructor"
           append-icon="mdi-magnify"
           solo

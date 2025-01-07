@@ -23,7 +23,7 @@
   interface Props {
     modelValue?: String | number;
     error?: String;
-    type?: 'text' | 'number';
+    type?: 'text' | 'number' | 'password' | 'time' | 'date';
     icon?: String; 
   }
 
