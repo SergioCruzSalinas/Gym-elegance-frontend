@@ -19,8 +19,6 @@ export const createActivityAppointmentAction = async ( idUsuario: string, idActi
     try {
         const { data } = await GymApi.post('agenda-actividades/crear-cita', { idUsuario, idActividad   }   )
 
-        console.log('revision de la data desde la accion', data)
-
         return {
             ok: true,
             data,

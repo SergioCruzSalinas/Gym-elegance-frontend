@@ -36,7 +36,6 @@
     </v-toolbar-items>
   </v-app-bar>
 
-  <!-- Menú de navegación lateral para pantallas pequeñas -->
   <v-navigation-drawer v-model="isDrawerOpen" temporary class="d-sm-none small-drawer" v-if="isSmallScreen">
     <v-list dense>
       <v-list-item>
@@ -57,10 +56,21 @@
                 <v-list-item-title>{{ item.text }}</v-list-item-title>
               </RouterLink>
             </v-list-item>
-          </v-list>
+          </v-list>   
         </v-menu>          
       </v-list-item>
+
+      
+      <v-btn class="drawer-btn" :to="{ name: 'inicio' }">
+        Menú principal
+      </v-btn>
+
+       
+    <v-btn text @click="authStore.logout()" class="drawer-btn">
+      Cerrar sesión
+    </v-btn>
     </v-list>
+ 
   </v-navigation-drawer>
 </template>
 

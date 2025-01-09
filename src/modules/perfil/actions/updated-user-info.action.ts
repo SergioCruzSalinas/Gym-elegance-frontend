@@ -6,8 +6,6 @@ import { EditUser } from "../interfaces/edit-user.interface";
 
 const authStore = useAuthStore();
  
-
-
 export const editUserAction = async(nombreUsuario: string, correoElectronico: string, telefono: string) =>{
     try {
         const { data } = await GymApi.patch<EditUser>(`usuarios/editar/${authStore.user?.id}`, {nombreUsuario, correoElectronico, telefono});

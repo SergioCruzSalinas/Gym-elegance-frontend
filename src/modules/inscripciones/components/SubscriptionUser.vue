@@ -45,14 +45,8 @@
   import { useAuthStore } from '@/modules/auth/stores/auth.store';
     
     
-    
-    
   const subscription = ref<Subscribe|undefined>();
-
   const authStore = useAuthStore();
-    
-  
-    
     
     const {data: subscriptionData, isLoading} = useQuery({
       queryKey: ['SubscriptionUser'],
@@ -65,9 +59,5 @@
        subscription.value = subscriptionData.value?.data;
        
     });
-
-    console.log("informacion",subscription)
-    console.log(subscriptionData)
-
 
 </script>

@@ -1,6 +1,5 @@
 <template>
   <v-row class="mt-16" justify="center">
-    <!-- Sección de Información Personal -->
     <v-col cols="12" sm="6" class="d-flex justify-center">
       <v-card class="pa-4 mb-4 ml-md-10">
         <v-card-title class="d-flex align-center">
@@ -51,7 +50,6 @@
       </v-card>
     </v-col>
 
-    <!-- Sección de Membresía -->
     <SubscriptionUser v-if="authStore.isUser" />
     
     <v-col v-if="authStore.isInstructor" cols="12" sm="6" class="d-flex justify-center">

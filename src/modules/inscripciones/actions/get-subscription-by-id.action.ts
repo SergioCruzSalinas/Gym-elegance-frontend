@@ -19,8 +19,6 @@ export const getSubscriptionByIdAction = async (idSubscription: string)  => {
         return data;
 
     } catch (error) {
-        console.log("ERRORSISMO",error.response.data);
-
         throw new Error('No se pudo realizar la peticion')
         
     }

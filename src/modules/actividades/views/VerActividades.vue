@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" class="mt-8 ml-16" align="stretch">
+  <v-row class="mt-16" justify="center">
     <v-col cols="12" md="12" offset-md="2">
       <v-text-field
         class="center"
@@ -16,15 +16,15 @@
       <span class="ml-4">Cargando actividades...</span>
     </div>
 
-    <CardActivity v-else v-for="activity in activities.data" :key="activity.id" :activity="activity"></CardActivity>
+    <CardActivity v-else v-for="activity in filteredActivities" :key="activity.id" :activity="activity"></CardActivity>
 
   </v-row>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import CardActivity from '../components/CardActivity.vue';
 import { getActivitiesAction } from '../actions';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
 
 const search = ref('')
@@ -33,6 +33,13 @@ const search = ref('')
 const { data: activities, isLoading } = useQuery({
   queryKey: ['activities', { page: 1 }],
   queryFn: getActivitiesAction,
+});
+
+const filteredActivities = computed(() => {
+  if (!activities.value) return [];
+  return activities.value.data.filter(activity => 
+  activity.descripcion.toLowerCase().includes(search.value.toLowerCase())
+  );
 });
 
 </script>

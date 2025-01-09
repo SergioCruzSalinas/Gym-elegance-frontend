@@ -22,8 +22,6 @@ export const getUserInfoAction = async () :Promise<UserInfoError|UserInfoSuccess
     
     const { data } = await GymApi.get(`/usuarios/${authStore.user?.id}`)
 
-    console.log('informacion del usuario', data)
-
     return {
         ok: true,
         userInfo: data.data

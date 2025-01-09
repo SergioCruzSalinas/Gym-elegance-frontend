@@ -7,8 +7,6 @@ export const getMembershipsAction = async() => {
 
         const { data } = await GymApi.get<Membership[]>('/membresias')
 
-        
-
         return data;
         
     } catch (error) {

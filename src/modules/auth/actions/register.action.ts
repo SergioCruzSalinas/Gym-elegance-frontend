@@ -25,8 +25,6 @@ export const RegisterAction = async (
             contrasenia,
         });
 
-        console.log(data);
-
         return {
             ok: true,
             user: data.user,                                                            

@@ -1,5 +1,5 @@
 import { GymApi } from "@/api/api";
-import { User } from "@/modules/auht/interfaces";
+import { User } from "@/modules/auth/interfaces";
 
 
 
@@ -7,8 +7,6 @@ export const getCoachesAction = async() => {
     try {
 
         const { data } = await GymApi.get<User[]>('/entrenadores')
-
-        console.log('get coaches data', data)
 
         return data;
         

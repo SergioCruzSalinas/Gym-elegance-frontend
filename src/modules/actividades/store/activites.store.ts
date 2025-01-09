@@ -17,8 +17,6 @@ export const useActivitiesStore = defineStore('activities',() => {
           
             activities.value = activitiesResp.data
 
-            console.log(activities)
-
             return{
                 activities
             }
@@ -27,11 +25,6 @@ export const useActivitiesStore = defineStore('activities',() => {
             
         }
     }
-
-    
-
-
-
 
     return{
         activities,

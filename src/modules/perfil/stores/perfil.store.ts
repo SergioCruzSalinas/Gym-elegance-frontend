@@ -36,7 +36,6 @@ export const usePerfilStore = defineStore('perfil', () => {
                 return { ok: false, message: 'Error al actualizar los datos del usuario.' };
             }
 
-            // Actualización de los datos del perfil con la respuesta
             if (userInfo.value) {
                 userInfo.value.nombre = updatedUserResp.data.nombreUsuario;
                 userInfo.value.correo_electronico = updatedUserResp.data.correoElectronico;

@@ -113,10 +113,10 @@ const updatedUser = async () => {
 
   }
   .custom-text-field .v-input__control .v-field__input {
-    color: white; /* Cambia el color del texto */
+    color: white;
   }
   .custom-text-field .v-input__control .v-field__placeholder {
-    color: white; /* Cambia el color del placeholder */
+    color: white; 
   }
   </style>
   

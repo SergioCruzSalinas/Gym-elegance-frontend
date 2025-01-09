@@ -4,9 +4,6 @@ import { ref } from "vue";
 import { Subscribe } from "../interfaces/subscribe.interface";
 
 
-
-
-
 export const useSubscriptionsStore = defineStore('subscribe', () => {
     const subscribe = ref<Subscribe | undefined>();
 
@@ -20,8 +17,6 @@ export const useSubscriptionsStore = defineStore('subscribe', () => {
 
             subscribe.value = subscribeResp.data
 
-            console.log('informacion de la suubscribe desde la store', subscribe.value)
-
             return {
                 ok: true,
                 subscribe
@@ -33,8 +28,6 @@ export const useSubscriptionsStore = defineStore('subscribe', () => {
             
         }
     }
-
-
 
     return{
         subscribe,

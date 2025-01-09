@@ -2,7 +2,7 @@
   <v-container fluid class="login-container">
     <v-row>
       <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
-        <h1>Editar actividad</h1>
+        <h1>Nueva inscripción</h1>
       </v-col>
       <v-col cols="12" md="12" class="d-flex justify-center md:justify-center">
         <v-card
@@ -31,13 +31,14 @@
             
             <div class="input-group">
               <div class="texto">Membresia: </div>
-              <CustomInput
-              v-model.number="id_membresia"
-              v-bind="id_membresiaAttrs"
-              :error="errors.id_membresia"
-              icon="mdi-text-box"
-              />
-            </div>
+              <v-select
+               v-model.number="id_membresia"
+               v-bind="id_membresia"
+               :items="memberships"
+               :rules="[v => !!v || 'La membresia es requerida']"
+               label="membresia"
+              ></v-select>
+            </div> 
 
             <div class="input-group">
              <div class="texto">Fecha de la inscripcion</div>
@@ -58,7 +59,7 @@
               variant="tonal"
               block
             >
-              <div class="texto">Editar actividad</div>
+              <div class="texto">Agregar actividad</div>
             </v-btn>
           </form>
         </v-card>

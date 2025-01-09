@@ -1,15 +1,15 @@
 <template>
-  <v-col cols="12" sm="6" md="4" lg="4" class="d-flex">
+  <v-col cols="12" sm="6" md="4" lg="4" class="d-flex justify-center">
     <v-card hover color="#333333" class="mr-16 membership-card" width="100%">
       <v-card-item>
         <v-row no-gutters>
           <!-- Columna de la imagen -->
-          <v-col cols="4" class="d-flex align-center justify-center mt-16">
+          <v-col cols="4" sm="3" class="d-flex align-center justify-center mt-16">
             <img src="/src/assets/img/iconActivity.png" width="80px" height="80px" alt="imagen del plan" class="activity-icon">
           </v-col>
 
           <!-- Columna del contenido -->
-          <v-col cols="8" class="d-flex flex-column">
+          <v-col cols="8" sm="9" class="d-flex flex-column">
             <div class="card-activity">
               <h1><v-icon left>mdi-information</v-icon>{{activity.descripcion}}</h1>
             </div>
@@ -131,39 +131,37 @@ const formatDate = (dateTime: string) => {
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .membership-card {
-    padding: 20px;
-    width: 100%;
-    height: auto;
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    padding: 10px;
+    transform: scale(1); /* Normaliza el tamaño */
   }
 
   .card-activity h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .card-activity h2 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .card-activity p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .activity-icon {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
   }
 }
 
 @media (max-width: 1024px) {
   .membership-card {
     margin: 16px;
-    padding: 20px;
+    padding: 16px;
   }
 
   .activity-icon {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
 }
 </style>

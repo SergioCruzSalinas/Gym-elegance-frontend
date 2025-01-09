@@ -22,7 +22,6 @@ export const activityIdAction = async (activityId : number) => {
     try {
         const { data } = await GymApi.get<Activity>(`/actividades/${activityId}`);
 
-        console.log("información desde la solicitud:", data);
         
 
         return data;

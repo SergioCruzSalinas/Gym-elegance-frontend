@@ -43,17 +43,19 @@
              
 
               <div class="texto">Contraseña</div>
-              <CustomInput
-                v-model="contrasenia"
-                :icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
-                :type="visible ? 'text' : 'password'"
-                density="compact"
-                placeholder="Ingresa tu contraseña"
-                prepend-inner-icon="mdi-lock-outline"
-                variant="outlined"
-                class="custom-input"
-                autocomplete="current-password"
-                @click:append-inner="visible = !visible"
+              <v-text-field
+              v-model="contrasenia"
+              :icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+              :type="visible ? 'text' : 'password'"
+              density="compact"
+              placeholder="Ingresa tu contraseña"
+              prepend-inner-icon="mdi-lock-outline"
+              variant="outlined"
+              class="custom-text-field"
+              base-color="black"
+              bg-color="white"
+              autocomplete="current-password" 
+              @click:append-inner="visible = !visible"
               />
   
               <v-btn

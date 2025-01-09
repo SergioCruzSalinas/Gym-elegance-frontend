@@ -22,7 +22,7 @@ const { data: gymAppointments, isLoading } = useQuery({
   queryKey: ['GymAppointments', { page : 1 }],
   queryFn: getGymAppointmentAction,
 })
-console.log('informacion desde mis actividades', gymAppointments)
+
 
 </script>
 

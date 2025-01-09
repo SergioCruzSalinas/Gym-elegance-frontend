@@ -6,8 +6,6 @@ import { GymApi } from "@/api/api";
 export const getSubscriptionsAction = async () => {
     try {
         const { data } = await GymApi.get<Subscribe[]>('inscripciones')
-
-        console.log("datos desde la petcion http",data)
         
         return data
 

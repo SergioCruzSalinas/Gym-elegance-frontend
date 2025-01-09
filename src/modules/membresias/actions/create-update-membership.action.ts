@@ -6,7 +6,7 @@ import { Membership } from "../interfaces/membership.interface";
 export const createUpdateMembreship = async (membership: Partial<Membership>) => {
     const membershipId = membership.id;
 
-    if( membershipId && membershipId == undefined ) {
+    if( membershipId && membershipId !== '' ) {
 
         return await updateMembership(membershipId, membership);
     }
@@ -15,7 +15,7 @@ export const createUpdateMembreship = async (membership: Partial<Membership>) =>
 }
 
 
-const updateMembership = async (membershipId: number, membership: Partial<Membership>) => {
+const updateMembership = async (membershipId: string, membership: Partial<Membership>) => {
     try {
         const { data } = await GymApi.patch(`/membresias/editar/${membershipId}`, membership);
         return data;

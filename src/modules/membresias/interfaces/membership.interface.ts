@@ -1,6 +1,6 @@
 
 export interface Membership {
-    id: number;
+    id: string;
     tipo: string;
     dias_duracion: number; 
     mes_duracion: number;

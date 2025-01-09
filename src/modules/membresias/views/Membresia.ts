@@ -91,8 +91,9 @@ export default defineComponent({
         watch(isUpdateSuccess, (value) => {
             if(!value)return;
 
+
             mensaje.value = 'Membresia actualizada correctamente';
-            router.replace(`/admin/membresias/lista-membresias/${updatedMembership.value.data.id}`)
+            router.replace(`/admin/membresias/lista-membresias/${updatedMembership.value.data?.data?.id}`)
 
             resetForm({
                 values: updatedMembership.value
@@ -106,10 +107,6 @@ export default defineComponent({
               refetch();
             },
           );
-      
-
-        console.log(values)
-
         
         return {
             values,

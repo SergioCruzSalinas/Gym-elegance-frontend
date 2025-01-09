@@ -14,7 +14,7 @@
 <style scoped>
 .mapa {
   width: 100%;
-  height: 100vh; /* Altura de la ventana completa */
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,13 +22,13 @@
 
 @media (max-width: 768px) {
   .mapa {
-    height: 50vh; /* Reduce la altura en dispositivos más pequeños */
+    height: 50vh; 
   }
 }
 
 @media (max-width: 480px) {
   .mapa {
-    height: 40vh; /* Altura aún menor para pantallas muy pequeñas */
+    height: 40vh; 
   }
 }
 </style>

@@ -7,10 +7,20 @@ import { Membership } from "../interfaces/membership.interface"
 
 
 export const idMembershipAction = async (idMembresia: string) => {
+    if(idMembresia === undefined){
+        return {
+            id:'',
+            tipo : '',
+            descripcion : '',
+            precio : '',
+            dias_duracion : '',
+            mes_duracion : '',
+        
+            
+        }
+    }
     try {
         const { data } = await GymApi.get<Membership>(`/membresias/${idMembresia}`)
-
-        console.log(data)
 
         return data
     } catch (error) {

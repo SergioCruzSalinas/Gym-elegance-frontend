@@ -1,6 +1,6 @@
 <template>
-  <v-col cols="12" sm="6" md="4" lg="3" class="d-flex">
-    <v-card hover color="#333333" max-width="400px" class="card-container mr-4">
+  <v-col cols="12" sm="6" class="d-flex justify-center">
+    <v-card class="pa-4 mb-4">
       <v-card-item>
         <v-row>
           <v-col cols="12">
@@ -16,7 +16,7 @@
             <v-divider></v-divider>
             <div class="card-coach">
               <v-icon  class="mr-2">mdi-check-circle</v-icon>
-              <p>Estatus: {{coach.estatus}}</p>
+              <p>Estatus: {{ !coach.estatus ? 'Activo' : 'Inactivo' }}</p>
             </div>
             <v-divider></v-divider>
             <div class="card-coach">

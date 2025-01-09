@@ -112,12 +112,6 @@ export default defineComponent({
             },    
         );
 
-        console.log(values);
-        console.log(props.idCoach);
-        console.log(mensaje);
-
-
-
         return {
             values,
             mensaje,
