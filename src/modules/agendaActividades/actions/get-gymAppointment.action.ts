@@ -6,6 +6,7 @@ import { useAuthStore } from "@/modules/auth/stores/auth.store";
 
 const authStore = useAuthStore();
 
+//actividades por usuario
 
 export const getGymAppointmentAction = async () => {
 

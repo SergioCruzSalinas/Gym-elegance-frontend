@@ -45,7 +45,6 @@ const isDropdownAgendaActividades = ref(false);
 const menuAgendaActividadesText = ref('Actividades');
 const subMenuAgendaActividades = ref([
   {text:'Actividades', link:'/agenda-actividades/mis-actividades' },
-  {text:'Crear cita', link:'/agenda-actividades/crear-cita' },
 ])
 
 const toggleMenu = (menu)=>{

@@ -3,12 +3,11 @@
     <v-card hover color="#333333" class="mr-16 membership-card" width="100%">
       <v-card-item>
         <v-row no-gutters>
-          <!-- Columna de la imagen -->
+
           <v-col cols="4" sm="3" class="d-flex align-center justify-center mt-16">
             <img src="/src/assets/img/iconActivity.png" width="80px" height="80px" alt="imagen del plan" class="activity-icon">
           </v-col>
 
-          <!-- Columna del contenido -->
           <v-col cols="8" sm="9" class="d-flex flex-column">
             <div class="card-activity">
               <h1><v-icon left>mdi-information</v-icon>{{activity.descripcion}}</h1>
@@ -36,9 +35,9 @@
         </v-row>
       </v-card-item>
 
-      <!-- Botones de acción, solo visibles para administradores -->
-      <v-card-actions v-if="authStore.isAdmin" class="justify-end-center d-flex flex-column">
-        <v-btn color="#1F3A93" variant="elevated" class="action-button mb-2" block>
+      <v-card-actions  class="justify-end-center d-flex flex-column">
+        <div v-if="authStore.isAdmin">
+          <v-btn color="#1F3A93" variant="elevated" class="action-button mb-2" block>
           <v-icon left>mdi-pencil</v-icon>
           <RouterLink :to="`/admin/administrarActividades/lista-actividades/${activity.id}`" style="color: inherit; text-decoration: none;">
             Editar
@@ -48,6 +47,21 @@
         <v-btn color="#B0B0B0" variant="elevated" class="action-button" block>
           <v-icon left>mdi-refresh</v-icon>Cambiar Estatus
         </v-btn>
+        </div>
+
+        <div v-if="authStore.isInstructor">
+          <v-btn 
+          variant="outlined"  
+          :to="`/agenda-actividades/mis-actividades/${activity.id}`" 
+          style="color: #FFD700; 
+          text-decoration: none;"
+          >
+          Revisar asistencia
+        </v-btn>
+          
+
+
+        </div>
       </v-card-actions>
 
     </v-card>

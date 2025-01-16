@@ -1,5 +1,5 @@
 <template>
-  <v-row class="mt-16" justify="center">
+  <v-row class="mt-16 ml-8" justify="center">
     <v-col cols="12" md="12" offset-md="2">
       <v-text-field
         class="center"

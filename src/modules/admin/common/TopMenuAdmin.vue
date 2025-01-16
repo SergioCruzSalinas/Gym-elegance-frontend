@@ -116,13 +116,6 @@ const menus = ref([
       { text: 'Agregar membresía', link: '/admin/membresias/agregar' },
     ]
   },
-  {
-    text: 'Admins',
-    subItems: [
-      { text: 'Administradores', link: '/admin/administradores' },
-      { text: 'Agregar administrador', link: '/admin/agregar' },
-    ]
-  }
 ]);
 
 const toggleMenu = (index) => {

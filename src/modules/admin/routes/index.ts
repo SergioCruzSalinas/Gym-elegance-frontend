@@ -13,19 +13,7 @@ export const adminRoutes:RouteRecordRaw={
     name:'admin',
     component:()=>import('@/modules/admin/layouts/AdminLayout.vue'),
     children:[
-        {
-            path: 'administradores',
-            name: 'administardores',
-            component:()=>import('@/modules/admin/views/Administradores.vue'),
-        },
-        {
-            path: 'agregar',
-            name: 'agregarAdministrador',
-            component:()=>import('@/modules/admin/views/AgregarAdministrador.vue')
-
-        },
-        
-        
+               
         ActividadesRoutes,
         InstructoresRoutes,
         MembresiasRoutes,

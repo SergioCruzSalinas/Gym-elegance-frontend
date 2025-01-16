@@ -32,10 +32,8 @@ import { ref, computed } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
 import { getSubscriptionsAction } from '../actions';
 
-// Estado de la búsqueda (aunque no se usará)
 const search = ref('');
 
-// Definición de las cabeceras para la tabla
 const headers = ref([
   { key: 'id', title: 'ID' },
   { key: 'id_usuario', title: 'Usuario' },
@@ -45,23 +43,17 @@ const headers = ref([
   { key: 'estatus', title: 'Estatus' },
 ]);
 
-// Realización de la consulta usando useQuery
 const { data: subscriptions, isLoading, error } = useQuery({
   queryKey: ['subscriptions'],
   queryFn: getSubscriptionsAction,
 });
 
-// Computed para acceder a las suscripciones cuando estén disponibles
 const subscriptionsData = computed(() => subscriptions.value ? subscriptions.value.data : []);
 
-// Manejo de errores
 if (error.value) {
   console.error("Error fetching subscriptions:", error.value);
 }
 
-// Consola para verificar los datos
-console.log("informacion de subscriptions", subscriptions);
-console.log("informacion de subscriptionsData desde el componente", subscriptionsData);
 </script>
 
 <style>

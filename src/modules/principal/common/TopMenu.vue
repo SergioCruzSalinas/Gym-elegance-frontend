@@ -77,8 +77,8 @@
         </v-list-item>
       </div>
 
-      <div v-else-if="authStore.isUser">
-        <BotonUsuarios class="text-menu"></BotonUsuarios>
+      <div v-else-if="authStore.isUser" class="small-drawer">
+        <BotonUsuarios class="drawer-btn"></BotonUsuarios>
       </div>
 
       <div v-else-if="authStore.isInstructor">
@@ -138,4 +138,6 @@ const closeDrawer = () => {
 .auth-btn {
   margin-left: auto;
 }
+
+
 </style>

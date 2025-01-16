@@ -1,14 +1,12 @@
 <template>
-    <v-col cols="12" sm="6" md="4" lg="3" class="d-flex justify-center">
-      <v-card hover color="#333333" width="100%" max-width="400px" class="mr-16 membership-card">
+    <v-col cols="12" sm="5"  class="d-flex justify-center">
+      <v-card hover color="#333333"   class="pa-4 mb-4 ml-md-10">
         <v-card-item>
           <v-row>
-            <!-- Columna de la imagen -->
             <v-col cols="4" class="d-flex align-center justify-center pt-4">
-              <img src="/src/assets/img/iconActivity.png" width="80px" height="80px" alt="imagen del plan">
+              <img src="/src/assets/img/iconActivity.png" width="700px" height="80px" alt="imagen del plan">
             </v-col>
   
-            <!-- Columna del contenido -->
             <v-col cols="8">
               <div class="card-activity">
                 <h1><v-icon left>mdi-calendar</v-icon>{{ gymAppointment.descripcion  }}</h1>
@@ -81,20 +79,20 @@ defineProps<PropsGymAppointment>();
   
   .card-activity {
       margin-bottom: 12px;
-      color: #FFFFFF; /* Color para texto de descripción */
+      color: #FFFFFF; 
   }
   
   .card-activity h1 {
       font-size: 20px;
       text-align: left;
       font-weight: bold;
-      color: #FFD700; /* Color dorado para el título */
+      color: #FFD700;
   }
   
   .card-activity h2 {
       font-size: 16px;
       text-align: left;
-      color: #E0E0E0; /* Gris claro para los subtítulos */
+      color: #E0E0E0; 
       margin-bottom: 4px;
   }
   
@@ -102,19 +100,18 @@ defineProps<PropsGymAppointment>();
       font-size: 14px;
       font-weight: normal;
       text-align: left;
-      color: #FFFFFF; /* Color blanco para el texto */
-      margin: 0;
+      color: #FFFFFF; 
   }
   
   .action-button {
       font-weight: bold;
       text-transform: uppercase;
       transition: background-color 0.3s ease;
-      color: #FFFFFF; /* Color blanco para texto de botones */
+      color: #FFFFFF; 
   }
   
   .action-button:hover {
-      background-color: #3A539B; /* Color más oscuro al pasar el ratón */
+      background-color: #3A539B; 
   }
   </style>
   

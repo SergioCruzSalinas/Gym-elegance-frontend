@@ -5,7 +5,7 @@ import { Activity } from "../interfaces"
 
 
 export const activityIdAction = async (activityId : number) => {
-    if(isNaN(activityId) || activityId === undefined){
+    if(activityId === undefined || isNaN(activityId)){
         return {
             id: 0,
             descripcion: '',

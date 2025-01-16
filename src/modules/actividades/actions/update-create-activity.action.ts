@@ -23,17 +23,9 @@ const updateActivityAction = async ( activityId: Number, activity: Partial<Activ
         return data;
     } catch (error) {
        
-
-        
-        console.log("Error inesperado:", error.response.data);
         throw new Error('No se pudo realizar la petición');
     }
 } 
-
-
-
-
-
 
 
 const addActivity = async (activity: Partial<Activity> ) => {

@@ -52,37 +52,7 @@
 
     <SubscriptionUser v-if="authStore.isUser" />
     
-    <v-col v-if="authStore.isInstructor" cols="12" sm="6" class="d-flex justify-center">
-      <v-card  class="pa-4 mb-4 mr-md-10">
-        <v-card-title class="d-flex align-center">
-          <v-icon class="mr-2">mdi-account-card-details</v-icon>
-          <h2 class="text-h6 font-weight-bold mb-0">Próxima actividad</h2>
-        </v-card-title>
-
-        <v-divider></v-divider>
-
-        <v-card-text>
-          <v-row>
-            <v-col cols="12" class="info-item">
-              <v-icon  class="mr-2">mdi-card-membership</v-icon>
-              <span><strong>Nombre de la actividad:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon  class="mr-2">mdi-calendar-start</v-icon>
-              <span><strong>Fecha de Inicio:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon class="mr-2">mdi-calendar-end</v-icon>
-              <span><strong>Hora en la que finaliza la actividad:</strong> xxxxxxxx</span>
-            </v-col>
-            <v-col cols="12" class="info-item">
-              <v-icon  class="mr-2">mdi-text-box-outline</v-icon>
-              <span><strong>Participantes:</strong> xxxxxxxx</span>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </v-col>
+    
   </v-row>
 
 </template>

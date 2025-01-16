@@ -4,8 +4,8 @@ import { RouteRecordRaw } from 'vue-router';
 export const perfilRoutes:RouteRecordRaw={
     path:'/perfil',
     name:'perfil',
+    beforeEnter: isAuthenticatedGuard,
     redirect: {name:'myPerfil'},
-    beforeEnter: [isAuthenticatedGuard],
     component:()=>import('@/modules/principal/layouts/PrincipalLayout.vue'),
     children:[
         {
