@@ -1,5 +1,4 @@
 import { GymApi } from "@/api/api"
-import { Activity } from "../interfaces"
 
 
 
@@ -20,7 +19,7 @@ export const activityIdAction = async (activityId : number) => {
     }
 
     try {
-        const { data } = await GymApi.get<Activity>(`/actividades/${activityId}`);
+        const { data } = await GymApi.get(`/actividades/${activityId}`);
 
         
 

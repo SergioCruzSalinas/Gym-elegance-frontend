@@ -79,7 +79,7 @@ const userProfile = async () => {
     const userProfile = await perfilStore.loadUserProfile();
 
     if(userProfile.ok) {
-      userInfo.value = userProfile.userInfo.value
+      userInfo.value = userProfile.userInfo?.value
       console.log(userProfile.userInfo)
       return;
     }

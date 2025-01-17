@@ -1,6 +1,5 @@
 import { GymApi } from "@/api/api"
 import { isAxiosError } from "axios"
-import { Membership } from "../interfaces/membership.interface"
 
 
 
@@ -20,7 +19,7 @@ export const idMembershipAction = async (idMembresia: string) => {
         }
     }
     try {
-        const { data } = await GymApi.get<Membership>(`/membresias/${idMembresia}`)
+        const { data } = await GymApi.get(`/membresias/${idMembresia}`)
 
         return data
     } catch (error) {

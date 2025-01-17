@@ -76,11 +76,11 @@ export default defineComponent({
         });
 
         watch(membership, () => {
-            if(!membership.value || !membership.value.data) return;
+            if(!membership.value || !membership.value?.data) return;
 
 
             resetForm({
-                values: membership.value.data
+                values: membership.value?.data
             })
 
         },{

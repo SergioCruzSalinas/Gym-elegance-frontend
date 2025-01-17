@@ -8,6 +8,7 @@ import { useForm } from "vee-validate";
 import CustomInput from "@/modules/principal/common/CustomInput.vue";
 import { formatDate } from "@/modules/principal/utils/dateUtils";
 import { getMembershipsAction } from "@/modules/membresias/actions";
+import { Membership } from "@/modules/membresias/interfaces/membership.interface";
 
 
 
@@ -117,7 +118,7 @@ export default defineComponent({
         watchEffect(() => {
             if (!membershipsData.value || !membershipsData.value.data) return;
             
-                memberships.value = membershipsData.value?.data.map(membership => membership.id);
+                memberships.value = membershipsData.value?.data.map((membership: Membership) => membership.id);
             
         });
         

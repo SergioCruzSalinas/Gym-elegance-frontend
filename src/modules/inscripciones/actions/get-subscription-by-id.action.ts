@@ -1,5 +1,4 @@
 import { GymApi } from "@/api/api";
-import { Subscribe } from "../interfaces/subscribe.interface";
 
 
 
@@ -14,7 +13,7 @@ export const getSubscriptionByIdAction = async (idSubscription: string)  => {
 
     }
     try {
-        const { data } = await GymApi.get<Subscribe>(`inscripciones/${idSubscription}`)
+        const { data } = await GymApi.get(`inscripciones/${idSubscription}`)
 
         return data;
 
