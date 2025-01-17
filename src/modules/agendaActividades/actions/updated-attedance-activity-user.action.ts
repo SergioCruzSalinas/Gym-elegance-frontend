@@ -7,7 +7,6 @@ export const updateAttendanceUserActivity = async(folio: string, asistencia: str
 
         return data;
     } catch (error) {
-        console.log(error.response.data);
         throw new Error ('Error updating attendance')
         
     }

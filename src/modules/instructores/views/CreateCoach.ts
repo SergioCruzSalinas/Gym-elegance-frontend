@@ -66,7 +66,7 @@ export default defineComponent({
             router.replace(`/admin/instructores/lista-instructores/${createdCoach.value.data?.id}`);
         
             resetForm({
-                values: updatedCoach.value
+                values: createdCoach.value
             });
         });
 

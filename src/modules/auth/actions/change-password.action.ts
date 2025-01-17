@@ -7,7 +7,6 @@ export const changePasswordAction = async( contrasenia: string, contraseniaNueva
 
         return data;
     } catch (error) {
-        console.log(error.response.data)
         throw new Error('error updating password');
         
     }

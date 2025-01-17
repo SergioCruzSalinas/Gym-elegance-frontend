@@ -1,10 +1,9 @@
 import { GymApi } from "@/api/api";
-import { Activity } from "../interfaces/activity.interface";
 
 export const getActivitiesAction = async() => {
     try {
 
-        const { data } = await GymApi.get<Activity[]>('/actividades')
+        const { data } = await GymApi.get('/actividades')
 
         return data;
         

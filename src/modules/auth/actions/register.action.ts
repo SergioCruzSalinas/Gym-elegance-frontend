@@ -18,7 +18,7 @@ export const RegisterAction = async (
     contrasenia: string,
 ): Promise<RegisterError | RegisterSuccess> => {
     try {
-        const { data } = await GymApi.post<User>('usuarios/crear-usuario', {
+        const { data } = await GymApi.post('usuarios/crear-usuario', {
             nombreUsuario,
             correoElectronico,
             telefono,

@@ -15,7 +15,7 @@ export const useActivitiesStore = defineStore('activities',() => {
                 return false
             }
           
-            activities.value = activitiesResp.data
+            activities.value = activitiesResp?.data
 
             return{
                 activities

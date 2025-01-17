@@ -19,12 +19,12 @@ export const checkTokenAction = async ():Promise<CheckError | CheckSuccess> => {
             return { ok: false };
         }
 
-        const { data } = await GymApi.get<UserAuth>('/check-token');
+        const { data } = await GymApi.get('/check-token');
 
         return {
             ok: true,
-            user: data.data,
-            token: data.data.at   
+            user: data?.data,
+            token: data?.data.at   
         }
 
     }catch(error){

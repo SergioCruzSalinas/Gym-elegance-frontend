@@ -16,15 +16,15 @@ interface LoginError {
 export const loginAction = async(correoElectronico: string, contrasenia: string ) :Promise<LoginError|LoginSuccess> => {
 
     try {
-        const { data } = await GymApi.post<UserAuth>('/crear-sesion', {
+        const { data } = await GymApi.post('/crear-sesion', {
             correoElectronico,
             contrasenia
         });
 
         return {
             ok: true,
-            user: data.data,
-            token: data.data.at   
+            user: data?.data,
+            token: data?.data.at   
         }
     } catch (error) {
 

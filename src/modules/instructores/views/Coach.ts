@@ -77,14 +77,11 @@ export default defineComponent({
         });
 
         watch(coach, () => {
-            if( !coach.value || !coach.value.data) return;
+            if( !coach.value || !coach.value?.data) return;
 
 
             resetForm({
-                values: coach.value.data,
-            },{
-                deep: true,
-                immediate: true,
+                values: coach.value?.data,
             });
         },{
             deep: true,

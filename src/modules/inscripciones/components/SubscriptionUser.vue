@@ -37,7 +37,7 @@
       </v-col>
     </template>
     
-<script lang="ts" setup>
+<script setup>
   import { ref, watchEffect } from 'vue';
   import { Subscribe } from '../interfaces/subscribe.interface';
   import { useQuery } from '@tanstack/vue-query';
@@ -45,7 +45,7 @@
   import { useAuthStore } from '@/modules/auth/stores/auth.store';
     
     
-  const subscription = ref<Subscribe|undefined>();
+  const subscription = ref();
   const authStore = useAuthStore();
     
     const {data: subscriptionData, isLoading} = useQuery({

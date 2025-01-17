@@ -1,12 +1,11 @@
 import { GymApi } from "@/api/api"
-import { UserUpdate } from "@/modules/auth/interfaces";
 
 
 
 
 
 
-export const getCoachByIdACtion = async (idCoach: string): Promise<UserUpdate> => {
+export const getCoachByIdACtion = async (idCoach: string)=> {
     if( idCoach === undefined || idCoach === null || idCoach === 'create'){
         return {
             id: '',
